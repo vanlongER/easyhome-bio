@@ -327,11 +327,6 @@ class Component extends DCLogic {
   var CDN_BASE = "https://r6i.pen.dropbuy.vn";
   var SITE_BASE = "https://easyhome.requa.vn/";
 
-  var input = document.getElementById("eh-search-input");
-  var btn = document.getElementById("eh-search-btn");
-  var resultsBox = document.getElementById("eh-search-results");
-  if (!input || !btn || !resultsBox) return;
-
   var debounceTimer = null;
   var currentRequestId = 0;
 
@@ -342,8 +337,17 @@ class Component extends DCLogic {
   }
 
   function setResultsHtml(html) {
+    var resultsBox = document.getElementById("eh-search-results");
+    if (!resultsBox) return;
     resultsBox.style.display = "block";
     resultsBox.innerHTML = html;
+  }
+
+  function hideResults() {
+    var resultsBox = document.getElementById("eh-search-results");
+    if (!resultsBox) return;
+    resultsBox.style.display = "none";
+    resultsBox.innerHTML = "";
   }
 
   function renderLoading() {
@@ -417,8 +421,7 @@ class Component extends DCLogic {
   function doSearch(rawKeyword) {
     var keyword = (rawKeyword || "").trim();
     if (keyword.length < 2) {
-      resultsBox.style.display = "none";
-      resultsBox.innerHTML = "";
+      hideResults();
       return;
     }
     var requestId = ++currentRequestId;
@@ -443,28 +446,15 @@ class Component extends DCLogic {
       });
   }
 
-  btn.addEventListener("click", function () {
-    if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-    doSearch(input.value);
-  });
-
-  input.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
+  document.addEventListener("click", function (e) {
+    var searchBtn = e.target.closest ? e.target.closest("#eh-search-btn") : null;
+    if (searchBtn) {
       e.preventDefault();
       if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-      doSearch(input.value);
+      var inputEl = document.getElementById("eh-search-input");
+      doSearch(inputEl ? inputEl.value : "");
+      return;
     }
-  });
-
-  input.addEventListener("input", function () {
-    if (debounceTimer) clearTimeout(debounceTimer);
-    var val = input.value;
-    debounceTimer = setTimeout(function () {
-      doSearch(val);
-    }, 400);
-  });
-
-  document.addEventListener("click", function (e) {
     var shopeeBtn = e.target.closest ? e.target.closest(".eh-search-shopee") : null;
     if (shopeeBtn) {
       var kw = shopeeBtn.getAttribute("data-kw") || "";
@@ -477,6 +467,26 @@ class Component extends DCLogic {
       window.open("https://www.tiktok.com/search?q=" + encodeURIComponent(kw2), "_blank", "noopener,noreferrer");
       return;
     }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
+    if (!inputEl) return;
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      doSearch(inputEl.value);
+    }
+  });
+
+  document.addEventListener("input", function (e) {
+    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
+    if (!inputEl) return;
+    if (debounceTimer) clearTimeout(debounceTimer);
+    var val = inputEl.value;
+    debounceTimer = setTimeout(function () {
+      doSearch(val);
+    }, 400);
   });
 })();
 </script>
