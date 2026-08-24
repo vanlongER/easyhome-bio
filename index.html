@@ -113,6 +113,20 @@
       </span>
     </div>
 
+    <div style="width: 100%; margin-top: 16px; animation: ehRise .6s .25s ease both;">
+      <span style="display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #4A5850; letter-spacing: .01em;">🔍 Tìm nhanh sản phẩm</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <input id="eh-search-input" type="text" inputmode="search" autocomplete="off" placeholder="Nhập tên sản phẩm..." style="flex: 1; min-width: 0; height: 44px; padding: 0 14px; border-radius: 14px; border: 1px solid rgba(35,54,47,.14); background: #FFFFFF; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 14px; color: #232F2A; outline: none; transition: border-color .16s ease, box-shadow .16s ease;" style-focus="border-color: #12B3A8; box-shadow: 0 0 0 3px rgba(18,179,168,.14);">
+        <button type="button" id="eh-search-btn" aria-label="Tìm kiếm sản phẩm" style="flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; border: 1px solid rgba(18,179,168,.35); background: rgba(18,179,168,.08); color: #12B3A8; cursor: pointer; transition: background-color .16s ease, transform .16s ease;" style-hover="background: rgba(18,179,168,.16); transform: translateY(-2px);" style-active="background: rgba(18,179,168,.22); transform: translateY(0);">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="#12B3A8" stroke-width="2"></circle>
+            <line x1="20" y1="20" x2="15.7" y2="15.7" stroke="#12B3A8" stroke-width="2" stroke-linecap="round"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="eh-search-results" style="display: none; margin-top: 12px;"></div>
+    </div>
+
     <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 26px; animation: ehRise .6s .26s ease both;">
       <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">MUA TRÊN SÀN QUEN THUỘC</span>
       <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
@@ -304,6 +318,165 @@ class Component extends DCLogic {
         if (fallbackCopy(HOTLINE_NUMBER)) showCopied(label);
       }
     } catch (err) {}
+  });
+})();
+</script>
+<script>
+(function () {
+  var SEARCH_API = "https://easyhome.requa.vn/api/proxy/bff/variations/search";
+  var CDN_BASE = "https://r6i.pen.dropbuy.vn";
+  var SITE_BASE = "https://easyhome.requa.vn/";
+
+  var input = document.getElementById("eh-search-input");
+  var btn = document.getElementById("eh-search-btn");
+  var resultsBox = document.getElementById("eh-search-results");
+  if (!input || !btn || !resultsBox) return;
+
+  var debounceTimer = null;
+  var currentRequestId = 0;
+
+  function escapeHtml(str) {
+    return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function setResultsHtml(html) {
+    resultsBox.style.display = "block";
+    resultsBox.innerHTML = html;
+  }
+
+  function renderLoading() {
+    setResultsHtml('<div style="padding: 16px; text-align: center; font-size: 13px; color: #8A938D;">Đang tìm...</div>');
+  }
+
+  function renderError() {
+    setResultsHtml(
+      '<div style="padding: 14px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 13px; line-height: 1.6; color: #6B7C8C;">' +
+      'Không tải được kết quả. Bạn có thể <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">tìm trực tiếp trên web →</a>' +
+      '</div>'
+    );
+  }
+
+  function renderEmpty() {
+    setResultsHtml(
+      '<div style="padding: 14px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 13px; line-height: 1.6; color: #6B7C8C;">' +
+      'Không tìm thấy sản phẩm nào. Thử từ khoá khác hoặc <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">xem toàn bộ sản phẩm trên web →</a>' +
+      '</div>'
+    );
+  }
+
+  function productCardHtml(item) {
+    var name = escapeHtml(item.product_name || "");
+    var img = escapeHtml(item.res_thumbnail_url ? CDN_BASE + item.res_thumbnail_url : "");
+    var link = escapeHtml(SITE_BASE + (item.slug || "") + "_p" + item.product_id);
+    var category = escapeHtml(item.category_name || "");
+    var warranty = (item.warranty_type === "M" && item.warranty_duration) ? "Bảo hành " + escapeHtml(String(item.warranty_duration)) + " tháng" : "";
+    var meta = [category, warranty].filter(Boolean).join(" · ");
+    var inStock = item.in_stock !== false;
+    var opacity = inStock ? "1" : ".5";
+    var stockNote = inStock ? "" : '<span style="display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #C0392B;">Tạm hết hàng</span>';
+
+    return (
+      '<a href="' + link + '" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); text-decoration: none; opacity: ' + opacity + '; transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.22);">' +
+        '<img src="' + img + '" alt="" loading="lazy" width="56" height="56" style="flex-shrink: 0; width: 56px; height: 56px; border-radius: 10px; object-fit: cover; background: #F0F5F4;">' +
+        '<span style="flex: 1; min-width: 0;">' +
+          '<span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13.5px; font-weight: 600; line-height: 1.4; color: #232F2A;">' + name + '</span>' +
+          '<span style="display: block; margin-top: 3px; font-size: 11.5px; color: #8A938D;">' + meta + '</span>' +
+          stockNote +
+          '<span style="display: block; margin-top: 4px; font-size: 12px; font-weight: 700; color: #2F7F63;">Xem giá tốt nhất →</span>' +
+        '</span>' +
+      '</a>'
+    );
+  }
+
+  function renderResults(data, keyword) {
+    var items = (data && data.items) || [];
+    var total = (data && data.total_records) || 0;
+    if (!items.length) {
+      renderEmpty();
+      return;
+    }
+    var kw = escapeHtml(keyword);
+    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + items.slice(0, 5).map(productCardHtml).join("") + '</div>';
+
+    if (total > 5) {
+      html += '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; text-align: center; font-size: 12.5px; font-weight: 700; color: #2F7F63;">Xem tất cả ' + total + ' sản phẩm trên web →</a>';
+    }
+
+    html +=
+      '<div style="display: flex; gap: 8px; margin-top: 12px;">' +
+        '<button type="button" class="eh-search-shopee" data-kw="' + kw + '" style="flex: 1; min-width: 0; height: 44px; border-radius: 12px; border: 1px solid rgba(238,77,45,.35); background: rgba(238,77,45,.08); color: #EE4D2D; font-family: \'Be Vietnam Pro\', \'Segoe UI\', system-ui, sans-serif; font-size: 12.5px; font-weight: 700; cursor: pointer;">Tìm trên Shopee</button>' +
+        '<button type="button" class="eh-search-tiktok" data-kw="' + kw + '" style="flex: 1; min-width: 0; height: 44px; border-radius: 12px; border: 1px solid rgba(35,54,47,.2); background: rgba(35,54,47,.05); color: #232F2A; font-family: \'Be Vietnam Pro\', \'Segoe UI\', system-ui, sans-serif; font-size: 12.5px; font-weight: 700; cursor: pointer;">Tìm trên TikTok Shop</button>' +
+      '</div>' +
+      '<span style="display: block; margin-top: 6px; font-size: 11px; font-style: italic; color: #93A5A0; text-align: center;">Giá trên sàn thường cao hơn do phí sàn</span>';
+
+    setResultsHtml(html);
+  }
+
+  function doSearch(rawKeyword) {
+    var keyword = (rawKeyword || "").trim();
+    if (keyword.length < 2) {
+      resultsBox.style.display = "none";
+      resultsBox.innerHTML = "";
+      return;
+    }
+    var requestId = ++currentRequestId;
+    renderLoading();
+    fetch(SEARCH_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ shop_id: 1, page_num: 1, page_size: 5, keyword: keyword })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("bad status");
+        return res.json();
+      })
+      .then(function (json) {
+        if (requestId !== currentRequestId) return;
+        if (!json || json.success !== true) throw new Error("bad response");
+        renderResults(json.data, keyword);
+      })
+      .catch(function () {
+        if (requestId !== currentRequestId) return;
+        renderError();
+      });
+  }
+
+  btn.addEventListener("click", function () {
+    if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+    doSearch(input.value);
+  });
+
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      doSearch(input.value);
+    }
+  });
+
+  input.addEventListener("input", function () {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    var val = input.value;
+    debounceTimer = setTimeout(function () {
+      doSearch(val);
+    }, 400);
+  });
+
+  document.addEventListener("click", function (e) {
+    var shopeeBtn = e.target.closest ? e.target.closest(".eh-search-shopee") : null;
+    if (shopeeBtn) {
+      var kw = shopeeBtn.getAttribute("data-kw") || "";
+      window.open("https://shopee.vn/search?keyword=" + encodeURIComponent(kw), "_blank", "noopener,noreferrer");
+      return;
+    }
+    var tiktokBtn = e.target.closest ? e.target.closest(".eh-search-tiktok") : null;
+    if (tiktokBtn) {
+      var kw2 = tiktokBtn.getAttribute("data-kw") || "";
+      window.open("https://www.tiktok.com/search?q=" + encodeURIComponent(kw2), "_blank", "noopener,noreferrer");
+      return;
+    }
   });
 })();
 </script>
