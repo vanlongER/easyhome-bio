@@ -28,6 +28,9 @@
 <helmet>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#12B3A8">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -80,18 +83,41 @@
 
     <a class="eh-cta-main" href="{{ primaryHref }}" target="_blank" rel="noopener" style="position: relative; display: block; width: 100%; margin-top: 26px; padding: 20px 22px 19px; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #6DB89A 0%, #4E9679 52%, #2F7F63 100%); box-shadow: 0 8px 24px rgba(18,179,168,.25); transition: transform .18s ease;" style-hover="transform: translateY(-3px);" style-active="transform: translateY(0);">
       <span style="position: absolute; top: 0; left: 0; width: 34%; height: 100%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.34), rgba(255,255,255,0)); animation: ehSheen 3.6s ease-in-out 1.2s infinite; pointer-events: none;"></span>
-      <span style="position: absolute; top: 11px; right: 12px; display: inline-block; padding: 5px 10px 4px; border-radius: 999px; background: linear-gradient(140deg, #FFDC7A, #FFC24D); color: #3D2B00; font-size: 10px; font-weight: 800; letter-spacing: .09em; box-shadow: 0 3px 8px rgba(61,43,0,.22);">{{ badgeText }}</span>
-      <span style="display: block; padding-right: 96px; color: #FFFFFF; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25;">Mua trực tiếp – Giá tốt nhất</span>
+      <span style="position: absolute; top: 11px; right: 12px; display: inline-block; padding: 5px 12px 4px; border-radius: 999px; background: linear-gradient(140deg, #FFDC7A, #FFC24D); color: #3D2B00; font-size: 14px; font-weight: 900; letter-spacing: .01em; box-shadow: 0 3px 8px rgba(61,43,0,.22);">{{ badgeText }}</span>
+      <span style="display: block; padding-right: 96px; color: #FFFFFF; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25;">Mua trực tiếp – Rẻ hơn tới 30%</span>
       <span style="display: block; margin-top: 5px; color: rgba(255,255,255,.86); font-size: 12.5px; font-weight: 500;">Không qua sàn · Không phí trung gian</span>
       <span style="position: absolute; top: 50%; right: 16px; transform: translateY(-50%); pointer-events: none;">
         <span style="display: block; color: #FFFFFF; font-size: 20px; font-weight: 600; opacity: .85; animation: ehNudge 1.5s ease-in-out infinite;">›</span>
       </span>
     </a>
 
-    <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 30px; animation: ehRise .6s .26s ease both;">
+    <div style="width: 100%; margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.55); animation: ehRise .6s .2s ease both;">
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #4A5850;">
+        <span style="font-size: 13px;">💡</span> Vì sao mua ở web rẻ hơn?
+      </span>
+      <p style="margin: 6px 0 0; font-size: 13px; line-height: 1.6; color: #6B7C8C;">Bán qua sàn phải chịu phí sàn, phí quảng cáo, chiết khấu gian hàng. Bán trực tiếp, tụi tôi cắt hết phần đó và trả lại cho bạn.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; margin-top: 10px; animation: ehRise .6s .24s ease both;">
+      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
+        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Thanh toán khi nhận (COD)
+      </span>
+      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
+        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Kiểm tra hàng trước khi trả tiền
+      </span>
+      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
+        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Đổi trả trong 7 ngày
+      </span>
+      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
+        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Cửa hàng thật tại Hà Nội
+      </span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 26px; animation: ehRise .6s .26s ease both;">
       <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">MUA TRÊN SÀN QUEN THUỘC</span>
       <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
     </div>
+    <span style="display: block; width: 100%; margin-top: 3px; font-size: 11px; font-style: italic; color: #93A5A0;">Tiện hơn nhưng giá cao hơn do phí sàn</span>
 
     <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 12px; animation: ehRise .6s .3s ease both;">
       <a href="https://vn.shp.ee/BdG9kXkb" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.22); border-color: rgba(238,77,45,.4);">
@@ -161,14 +187,23 @@
             </span>
             <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
           </a>
-          <a href="tel:+84702516668" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid rgba(35,54,47,.09); transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.2);">
-            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #2F7F63; color: #fff; font-size: 14px; font-weight: 700;">☎</span>
-            <span style="flex: 1; min-width: 0;">
-              <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">Hotline</span>
-              <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">8:00 – 21:00, cả cuối tuần</span>
-            </span>
-            <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
-          </a>
+          <div style="display: flex; align-items: stretch; gap: 8px; width: 100%;">
+            <a href="tel:+84702516668" style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid rgba(35,54,47,.09); transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.2);">
+              <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #2F7F63; color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0;">☎</span>
+              <span style="flex: 1; min-width: 0;">
+                <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">Hotline</span>
+                <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">8:00 – 21:00, cả cuối tuần</span>
+              </span>
+              <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
+            </a>
+            <button type="button" id="eh-copy-hotline" style="flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 0 12px; border-radius: 14px; border: 1px solid rgba(18,179,168,.35); background: rgba(18,179,168,.08); color: #12B3A8; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: background-color .16s ease, transform .16s ease;" style-hover="background: rgba(18,179,168,.16); transform: translateY(-2px);" style-active="background: rgba(18,179,168,.22); transform: translateY(0);">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="#12B3A8" stroke-width="2"></rect>
+                <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="#12B3A8" stroke-width="2"></path>
+              </svg>
+              <span class="eh-copy-label">Copy số</span>
+            </button>
+          </div>
         </div>
       </div>
     </sc-if>
@@ -212,16 +247,65 @@
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:1120},&quot;primaryHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://easyhome.requa.vn&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;badgeText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;GIÁ TỐT NHẤT&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;showContact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nhóm nút&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:1120},&quot;primaryHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://easyhome.requa.vn&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;badgeText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;-30%&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;showContact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nhóm nút&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     return {
       primaryHref: this.props.primaryHref ?? "https://easyhome.requa.vn",
-      badgeText: this.props.badgeText ?? "GIÁ TỐT NHẤT",
+      badgeText: this.props.badgeText ?? "-30%",
       showContact: this.props.showContact ?? true,
     };
   }
 }
+</script>
+<script>
+(function () {
+  var HOTLINE_NUMBER = "0702516668";
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  function showCopied(label) {
+    if (!label) return;
+    if (label.__ehCopyTimer) clearTimeout(label.__ehCopyTimer);
+    var original = label.getAttribute("data-original") || label.textContent;
+    label.setAttribute("data-original", original);
+    label.textContent = "Đã copy ✓";
+    label.__ehCopyTimer = setTimeout(function () {
+      label.textContent = original;
+      label.__ehCopyTimer = null;
+    }, 2000);
+  }
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest("#eh-copy-hotline") : null;
+    if (!btn) return;
+    e.preventDefault();
+    var label = btn.querySelector(".eh-copy-label");
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(HOTLINE_NUMBER).then(function () {
+          showCopied(label);
+        }).catch(function () {
+          if (fallbackCopy(HOTLINE_NUMBER)) showCopied(label);
+        });
+      } else {
+        if (fallbackCopy(HOTLINE_NUMBER)) showCopied(label);
+      }
+    } catch (err) {}
+  });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "EasyHome — Đơn giản hoá ngôi nhà của bạn",
+  "short_name": "EasyHome",
+  "description": "Kênh chính thức EasyHome — gia dụng, phụ kiện chính hãng",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6FAF9",
+  "theme_color": "#12B3A8",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
