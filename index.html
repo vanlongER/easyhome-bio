@@ -250,7 +250,7 @@
     </a>
 
     <div style="display: flex; align-items: center; gap: 8px; margin-top: 30px; padding: 9px 14px 9px 10px; border-radius: 999px; background: rgba(255,255,255,.6); border: 1px solid rgba(35,54,47,.07);">
-      <video class="eh-mascot-video" src="assets/mascot_bike_transparent.webm" autoplay loop muted playsinline style="display: block; width: 60px; height: 60px; object-fit: contain;"></video>
+      <img src="assets/mascot_bike_transparent.gif" alt="" style="display: block; width: 60px; height: 60px; object-fit: contain;">
       <span style="font-size: 12px; font-weight: 500; color: #6E7873;">Giao nhanh toàn quốc · Đổi trả 7 ngày</span>
     </div>
 
@@ -481,45 +481,6 @@ class Component extends DCLogic {
       doSearch(val);
     }, 400);
   });
-})();
-</script>
-<script>
-(function () {
-  function initMascotVideo(video) {
-    if (!video || video.__ehMascotInit) return true;
-    video.__ehMascotInit = true;
-    try {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute("muted", "");
-      video.playsInline = true;
-      var playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(function (err) {
-          console.warn("[EasyHome] mascot video autoplay bi trinh duyet chan:", err);
-        });
-      }
-    } catch (err) {
-      console.warn("[EasyHome] mascot video init loi:", err);
-    }
-    return true;
-  }
-
-  function tryInit() {
-    var video = document.querySelector(".eh-mascot-video");
-    if (video) return initMascotVideo(video);
-    return false;
-  }
-
-  if (!tryInit()) {
-    var observer = new MutationObserver(function () {
-      if (tryInit()) observer.disconnect();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-    setTimeout(function () { observer.disconnect(); }, 10000);
-  }
-
-  document.addEventListener("DOMContentLoaded", tryInit);
 })();
 </script>
 </body>
