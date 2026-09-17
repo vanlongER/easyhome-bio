@@ -53,6 +53,16 @@
     .eh-cta-main:hover { animation: ehGlowHover .8s ease-in-out infinite alternate; }
   }
   @keyframes ehPing { 0% { transform: scale(.55); opacity: .55; } 70% { transform: scale(1.9); opacity: 0; } 100% { transform: scale(1.9); opacity: 0; } }
+  @keyframes ehSearchPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(18,179,168,.14), 0 2px 8px rgba(18,179,168,.10); }
+    50% { box-shadow: 0 0 0 7px rgba(18,179,168,.08), 0 4px 16px rgba(18,179,168,.24); }
+  }
+  .eh-search-input { border: 2px solid #12B3A8; background: #FFFFFF; color: #16324F; transition: border-color .16s ease, box-shadow .16s ease; animation: ehSearchPulse 2.2s ease-in-out infinite; }
+  .eh-search-input::placeholder { color: rgba(22,50,79,.42); }
+  .eh-search-input:focus { animation: none; border-color: #0E8F86; box-shadow: 0 0 0 4px rgba(18,179,168,.18); }
+  .eh-search-btn { background: linear-gradient(135deg, #1AC9BD 0%, #0E8F86 100%); box-shadow: 0 4px 12px rgba(18,179,168,.32); transition: transform .14s ease, box-shadow .14s ease; }
+  .eh-search-btn:hover { transform: scale(1.07); box-shadow: 0 6px 18px rgba(18,179,168,.42); }
+  .eh-search-btn:active { transform: scale(.94); box-shadow: 0 3px 8px rgba(18,179,168,.3); }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; }
     .eh-cta-main { box-shadow: 0 8px 24px rgba(18,179,168,.25) !important; }
@@ -116,11 +126,11 @@
     <div style="width: 100%; margin-top: 16px; animation: ehRise .6s .25s ease both;">
       <span style="display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #4A5850; letter-spacing: .01em;">🔍 Tìm nhanh sản phẩm</span>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <input id="eh-search-input" type="text" inputmode="search" autocomplete="off" placeholder="Nhập tên sản phẩm..." style="flex: 1; min-width: 0; height: 44px; padding: 0 14px; border-radius: 14px; border: 1px solid rgba(35,54,47,.14); background: #FFFFFF; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 14px; color: #232F2A; outline: none; transition: border-color .16s ease, box-shadow .16s ease;" style-focus="border-color: #12B3A8; box-shadow: 0 0 0 3px rgba(18,179,168,.14);">
-        <button type="button" id="eh-search-btn" aria-label="Tìm kiếm sản phẩm" style="flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; border: 1px solid rgba(18,179,168,.35); background: rgba(18,179,168,.08); color: #12B3A8; cursor: pointer; transition: background-color .16s ease, transform .16s ease;" style-hover="background: rgba(18,179,168,.16); transform: translateY(-2px);" style-active="background: rgba(18,179,168,.22); transform: translateY(0);">
+        <input id="eh-search-input" class="eh-search-input" type="text" inputmode="search" autocomplete="off" placeholder="Nhập tên sản phẩm..." style="flex: 1; min-width: 0; height: 44px; padding: 0 14px; border-radius: 14px; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 14px; outline: none;">
+        <button type="button" id="eh-search-btn" class="eh-search-btn" aria-label="Tìm kiếm sản phẩm" style="flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; border: none; cursor: pointer;">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.5" fill="none" stroke="#12B3A8" stroke-width="2"></circle>
-            <line x1="20" y1="20" x2="15.7" y2="15.7" stroke="#12B3A8" stroke-width="2" stroke-linecap="round"></line>
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="#FFFFFF" stroke-width="2"></circle>
+            <line x1="20" y1="20" x2="15.7" y2="15.7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
           </svg>
         </button>
       </div>
@@ -173,6 +183,14 @@
         <span style="flex: 1; min-width: 0;">
           <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">YouTube Checker Tech</span>
           <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Việt hoá review công nghệ quốc tế</span>
+        </span>
+        <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
+      </a>
+      <a href="https://blog.easyhome.vn/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; color: #232F2A;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(18,179,168,.34); background: #12B3A8; border-color: #12B3A8; color: #FFFFFF;" style-active="background: #12B3A8; border-color: #12B3A8; color: #FFFFFF;">
+        <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(35,54,47,.08); color: #12B3A8; font-size: 16px;">📝</span>
+        <span style="flex: 1; min-width: 0;">
+          <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">Blog Đánh Giá Công Nghệ</span>
+          <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Bài viết chuyên sâu, so sánh &amp; kinh nghiệm chọn mua</span>
         </span>
         <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
       </a>
@@ -329,14 +347,35 @@ class Component extends DCLogic {
   var SEARCH_API = "https://easyhome.requa.vn/api/proxy/bff/variations/search";
   var CDN_BASE = "https://r6i.pen.dropbuy.vn";
   var SITE_BASE = "https://easyhome.requa.vn/";
+  var MAX_RESULTS = 6;
 
   var debounceTimer = null;
-  var currentRequestId = 0;
+  var searchSeq = 0;
+
+  // catalogState: idle | loading | ready | error
+  var catalogState = "idle";
+  var catalogItems = null;
 
   function escapeHtml(str) {
     return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+
+  // Bỏ dấu tiếng Việt, chữ thường, dùng để so khớp "chứa" (substring)
+  function normalizeText(str) {
+    return String(str == null ? "" : str)
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase()
+      .trim();
+  }
+
+  // Bản "rút gọn" chỉ giữ chữ/số, dùng để so khớp mã sản phẩm kiểu PMT40 = PMT-40 = PMT 40
+  function compactText(str) {
+    return normalizeText(str).replace(/[^a-z0-9]/g, "");
   }
 
   function setResultsHtml(html) {
@@ -360,15 +399,16 @@ class Component extends DCLogic {
   function renderError() {
     setResultsHtml(
       '<div style="padding: 14px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 13px; line-height: 1.6; color: #6B7C8C;">' +
-      'Không tải được kết quả. Bạn có thể <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">tìm trực tiếp trên web →</a>' +
+      'Không tải được dữ liệu sản phẩm. Bạn có thể <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">tìm trực tiếp trên web →</a>' +
       '</div>'
     );
   }
 
   function renderEmpty() {
     setResultsHtml(
-      '<div style="padding: 14px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 13px; line-height: 1.6; color: #6B7C8C;">' +
-      'Không tìm thấy sản phẩm nào. Thử từ khoá khác hoặc <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">xem toàn bộ sản phẩm trên web →</a>' +
+      '<div style="padding: 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); text-align: center;">' +
+        '<p style="margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: #6B7C8C;">Không tìm thấy sản phẩm nào. Thử từ khoá khác hoặc</p>' +
+        '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 12px 28px; border-radius: 14px; background: linear-gradient(135deg, #1AC9BD 0%, #0E8F86 100%); color: #FFFFFF; font-size: 14px; font-weight: 800; text-decoration: none; box-shadow: 0 4px 12px rgba(18,179,168,.3);">Vào Gian hàng <span style="font-size: 16px;">→</span></a>' +
       '</div>'
     );
   }
@@ -397,18 +437,16 @@ class Component extends DCLogic {
     );
   }
 
-  function renderResults(data, keyword) {
-    var items = (data && data.items) || [];
-    var total = (data && data.total_records) || 0;
-    if (!items.length) {
+  function renderResults(matchedItems, totalMatched, keyword) {
+    if (!matchedItems.length) {
       renderEmpty();
       return;
     }
     var kw = escapeHtml(keyword);
-    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + items.slice(0, 5).map(productCardHtml).join("") + '</div>';
+    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + matchedItems.slice(0, MAX_RESULTS).map(productCardHtml).join("") + '</div>';
 
-    if (total > 5) {
-      html += '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; text-align: center; font-size: 12.5px; font-weight: 700; color: #2F7F63;">Xem tất cả ' + total + ' sản phẩm trên web →</a>';
+    if (totalMatched > MAX_RESULTS) {
+      html += '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; text-align: center; font-size: 12.5px; font-weight: 700; color: #2F7F63;">Xem tất cả sản phẩm trên web →</a>';
     }
 
     html +=
@@ -420,33 +458,99 @@ class Component extends DCLogic {
     setResultsHtml(html);
   }
 
-  function doSearch(rawKeyword) {
-    var keyword = (rawKeyword || "").trim();
-    if (keyword.length < 2) {
-      hideResults();
-      return;
-    }
-    var requestId = ++currentRequestId;
-    renderLoading();
+  // API search chỉ khớp nguyên từ, không hỗ trợ gõ dở/prefix (đã kiểm chứng qua API thật).
+  // Nên tải trước toàn bộ danh mục 1 lần (~594 sản phẩm, ~200KB gzip) rồi tìm phía client:
+  // bỏ dấu + chữ thường + so khớp "chứa", cộng thêm bản rút gọn chỉ chữ/số để PMT40 = PMT-40 = PMT 40.
+  function loadCatalog(forceRetry) {
+    if (catalogState === "loading" || catalogState === "ready") return;
+    if (catalogState === "error" && !forceRetry) return;
+    catalogState = "loading";
     fetch(SEARCH_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ shop_id: 1, page_num: 1, page_size: 5, keyword: keyword })
+      body: JSON.stringify({ shop_id: 1, page_num: 1, page_size: 5000, keyword: "" })
     })
       .then(function (res) {
         if (!res.ok) throw new Error("bad status");
         return res.json();
       })
       .then(function (json) {
-        if (requestId !== currentRequestId) return;
         if (!json || json.success !== true) throw new Error("bad response");
-        renderResults(json.data, keyword);
+        var raw = (json.data && json.data.items) || [];
+        catalogItems = raw.map(function (it) {
+          var name = it.product_name || it.name || "";
+          var sku = it.sku || "";
+          var category = it.category_name || "";
+          return {
+            product_id: it.product_id,
+            product_name: name,
+            slug: it.slug || "",
+            category_name: category,
+            res_thumbnail_url: it.res_thumbnail_url || "",
+            in_stock: it.in_stock !== false,
+            warranty_type: it.warranty_type,
+            warranty_duration: it.warranty_duration,
+            _n: normalizeText(name + " " + sku + " " + category),
+            _c: compactText(name + " " + sku)
+          };
+        });
+        catalogState = "ready";
+        var inputEl = document.getElementById("eh-search-input");
+        if (inputEl) runSearch(inputEl.value);
       })
       .catch(function () {
-        if (requestId !== currentRequestId) return;
-        renderError();
+        catalogState = "error";
+        var inputEl = document.getElementById("eh-search-input");
+        if (inputEl && inputEl.value.trim().length >= 2) renderError();
       });
   }
+
+  function runSearch(rawKeyword) {
+    var keyword = (rawKeyword || "").trim();
+    if (keyword.length < 2) {
+      hideResults();
+      return;
+    }
+    var mySeq = ++searchSeq;
+
+    if (catalogState === "ready") {
+      var qn = normalizeText(keyword);
+      var qc = compactText(keyword);
+      var matches = [];
+      for (var i = 0; i < catalogItems.length; i++) {
+        var p = catalogItems[i];
+        var idx = qn ? p._n.indexOf(qn) : -1;
+        var cidx = qc ? p._c.indexOf(qc) : -1;
+        if (idx !== -1 || cidx !== -1) {
+          matches.push({ item: p, rank: idx !== -1 ? idx : (1000 + cidx) });
+        }
+      }
+      matches.sort(function (a, b) { return a.rank - b.rank; });
+      if (mySeq !== searchSeq) return;
+      renderResults(matches.map(function (m) { return m.item; }), matches.length, keyword);
+      return;
+    }
+
+    if (catalogState === "loading") {
+      renderLoading();
+      return;
+    }
+
+    if (catalogState === "error") {
+      renderError();
+      loadCatalog(true);
+      return;
+    }
+
+    renderLoading();
+    loadCatalog();
+  }
+
+  document.addEventListener("focusin", function (e) {
+    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
+    if (!inputEl) return;
+    loadCatalog();
+  });
 
   document.addEventListener("click", function (e) {
     var searchBtn = e.target.closest ? e.target.closest("#eh-search-btn") : null;
@@ -454,7 +558,7 @@ class Component extends DCLogic {
       e.preventDefault();
       if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
       var inputEl = document.getElementById("eh-search-input");
-      doSearch(inputEl ? inputEl.value : "");
+      runSearch(inputEl ? inputEl.value : "");
       return;
     }
     var shopeeBtn = e.target.closest ? e.target.closest(".eh-search-shopee") : null;
@@ -471,7 +575,7 @@ class Component extends DCLogic {
     if (e.key === "Enter") {
       e.preventDefault();
       if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-      doSearch(inputEl.value);
+      runSearch(inputEl.value);
     }
   });
 
@@ -481,8 +585,8 @@ class Component extends DCLogic {
     if (debounceTimer) clearTimeout(debounceTimer);
     var val = inputEl.value;
     debounceTimer = setTimeout(function () {
-      doSearch(val);
-    }, 400);
+      runSearch(val);
+    }, 300);
   });
 })();
 </script>
