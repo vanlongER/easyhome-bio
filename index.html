@@ -344,38 +344,23 @@ class Component extends DCLogic {
 </script>
 <script>
 (function () {
-  var SEARCH_API = "https://easyhome.requa.vn/api/proxy/bff/variations/search";
-  var CDN_BASE = "https://r6i.pen.dropbuy.vn";
+  // /api/search is a same-origin Cloudflare Pages Function (see functions/api/search.js).
+  // It exists because the real storefront scopes search by an "x-tenant-id" header that
+  // easyhome.requa.vn's CORS policy does not allow from a foreign origin like this page --
+  // confirmed via a real cross-origin fetch() test, not assumed. The Function also does the
+  // diacritics-insensitive substring matching server-side (the upstream API only supports
+  // exact whole-token matches), so this page just renders whatever it returns.
+  var SEARCH_ENDPOINT = "/api/search";
   var SITE_BASE = "https://easyhome.requa.vn/";
   var MAX_RESULTS = 6;
 
   var debounceTimer = null;
   var searchSeq = 0;
 
-  // catalogState: idle | loading | ready | error
-  var catalogState = "idle";
-  var catalogItems = null;
-
   function escapeHtml(str) {
     return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
-  }
-
-  // Bỏ dấu tiếng Việt, chữ thường, dùng để so khớp "chứa" (substring)
-  function normalizeText(str) {
-    return String(str == null ? "" : str)
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "D")
-      .toLowerCase()
-      .trim();
-  }
-
-  // Bản "rút gọn" chỉ giữ chữ/số, dùng để so khớp mã sản phẩm kiểu PMT40 = PMT-40 = PMT 40
-  function compactText(str) {
-    return normalizeText(str).replace(/[^a-z0-9]/g, "");
   }
 
   function setResultsHtml(html) {
@@ -415,8 +400,8 @@ class Component extends DCLogic {
 
   function productCardHtml(item) {
     var name = escapeHtml(item.product_name || "");
-    var img = escapeHtml(item.res_thumbnail_url ? CDN_BASE + item.res_thumbnail_url : "");
-    var link = escapeHtml(SITE_BASE + (item.slug || "") + "_p" + item.product_id);
+    var img = escapeHtml(item.thumbnail_url || "");
+    var link = escapeHtml(item.link || SITE_BASE);
     var category = escapeHtml(item.category_name || "");
     var warranty = (item.warranty_type === "M" && item.warranty_duration) ? "Bảo hành " + escapeHtml(String(item.warranty_duration)) + " tháng" : "";
     var meta = [category, warranty].filter(Boolean).join(" · ");
@@ -437,16 +422,17 @@ class Component extends DCLogic {
     );
   }
 
-  function renderResults(matchedItems, totalMatched, keyword) {
-    if (!matchedItems.length) {
+  function renderResults(items, total, keyword) {
+    if (!items.length) {
       renderEmpty();
       return;
     }
     var kw = escapeHtml(keyword);
-    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + matchedItems.slice(0, MAX_RESULTS).map(productCardHtml).join("") + '</div>';
+    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + items.slice(0, MAX_RESULTS).map(productCardHtml).join("") + '</div>';
 
-    if (totalMatched > MAX_RESULTS) {
-      html += '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; text-align: center; font-size: 12.5px; font-weight: 700; color: #2F7F63;">Xem tất cả sản phẩm trên web →</a>';
+    if (total > items.length) {
+      var searchUrl = SITE_BASE + "tim-kiem?q=" + encodeURIComponent(keyword);
+      html += '<a href="' + escapeHtml(searchUrl) + '" target="_blank" rel="noopener" style="display: block; margin-top: 10px; text-align: center; padding: 10px 18px; border-radius: 12px; background: rgba(18,179,168,.10); border: 1px solid rgba(18,179,168,.3); color: #0E8F86; font-size: 12.5px; font-weight: 600; text-decoration: none;">Xem tất cả ' + total + ' kết quả →</a>';
     }
 
     html +=
@@ -458,53 +444,6 @@ class Component extends DCLogic {
     setResultsHtml(html);
   }
 
-  // API search chỉ khớp nguyên từ, không hỗ trợ gõ dở/prefix (đã kiểm chứng qua API thật).
-  // Nên tải trước toàn bộ danh mục 1 lần (~594 sản phẩm, ~200KB gzip) rồi tìm phía client:
-  // bỏ dấu + chữ thường + so khớp "chứa", cộng thêm bản rút gọn chỉ chữ/số để PMT40 = PMT-40 = PMT 40.
-  function loadCatalog(forceRetry) {
-    if (catalogState === "loading" || catalogState === "ready") return;
-    if (catalogState === "error" && !forceRetry) return;
-    catalogState = "loading";
-    fetch(SEARCH_API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ shop_id: 1, page_num: 1, page_size: 5000, keyword: "" })
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error("bad status");
-        return res.json();
-      })
-      .then(function (json) {
-        if (!json || json.success !== true) throw new Error("bad response");
-        var raw = (json.data && json.data.items) || [];
-        catalogItems = raw.map(function (it) {
-          var name = it.product_name || it.name || "";
-          var sku = it.sku || "";
-          var category = it.category_name || "";
-          return {
-            product_id: it.product_id,
-            product_name: name,
-            slug: it.slug || "",
-            category_name: category,
-            res_thumbnail_url: it.res_thumbnail_url || "",
-            in_stock: it.in_stock !== false,
-            warranty_type: it.warranty_type,
-            warranty_duration: it.warranty_duration,
-            _n: normalizeText(name + " " + sku + " " + category),
-            _c: compactText(name + " " + sku)
-          };
-        });
-        catalogState = "ready";
-        var inputEl = document.getElementById("eh-search-input");
-        if (inputEl) runSearch(inputEl.value);
-      })
-      .catch(function () {
-        catalogState = "error";
-        var inputEl = document.getElementById("eh-search-input");
-        if (inputEl && inputEl.value.trim().length >= 2) renderError();
-      });
-  }
-
   function runSearch(rawKeyword) {
     var keyword = (rawKeyword || "").trim();
     if (keyword.length < 2) {
@@ -512,45 +451,25 @@ class Component extends DCLogic {
       return;
     }
     var mySeq = ++searchSeq;
-
-    if (catalogState === "ready") {
-      var qn = normalizeText(keyword);
-      var qc = compactText(keyword);
-      var matches = [];
-      for (var i = 0; i < catalogItems.length; i++) {
-        var p = catalogItems[i];
-        var idx = qn ? p._n.indexOf(qn) : -1;
-        var cidx = qc ? p._c.indexOf(qc) : -1;
-        if (idx !== -1 || cidx !== -1) {
-          matches.push({ item: p, rank: idx !== -1 ? idx : (1000 + cidx) });
-        }
-      }
-      matches.sort(function (a, b) { return a.rank - b.rank; });
-      if (mySeq !== searchSeq) return;
-      renderResults(matches.map(function (m) { return m.item; }), matches.length, keyword);
-      return;
-    }
-
-    if (catalogState === "loading") {
-      renderLoading();
-      return;
-    }
-
-    if (catalogState === "error") {
-      renderError();
-      loadCatalog(true);
-      return;
-    }
-
     renderLoading();
-    loadCatalog();
-  }
 
-  document.addEventListener("focusin", function (e) {
-    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
-    if (!inputEl) return;
-    loadCatalog();
-  });
+    fetch(SEARCH_ENDPOINT + "?q=" + encodeURIComponent(keyword))
+      .then(function (res) {
+        if (!res.ok) throw new Error("bad status");
+        return res.json();
+      })
+      .then(function (json) {
+        if (mySeq !== searchSeq) return;
+        if (!json || json.success !== true) throw new Error("bad response");
+        var items = (json.data && json.data.items) || [];
+        var total = (json.data && json.data.total) || 0;
+        renderResults(items, total, keyword);
+      })
+      .catch(function () {
+        if (mySeq !== searchSeq) return;
+        renderError();
+      });
+  }
 
   document.addEventListener("click", function (e) {
     var searchBtn = e.target.closest ? e.target.closest("#eh-search-btn") : null;
