@@ -391,19 +391,24 @@ h1,h2,p{margin:0}
 .chart{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:14px;background:#0D1915;border:1px solid rgba(234,244,240,.05)}
 .acc__in .chart__ttl{font-size:12.5px;font-weight:700;line-height:1.35;color:var(--ink)}
 .chart__ttl span{font-weight:500;color:var(--mute)}
-.chart__row{display:grid;grid-template-columns:88px minmax(0,1fr);align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mute)}
-.chart__row .plus{margin-right:4px;color:var(--mint);font-size:16px;font-weight:800;font-style:normal;line-height:1}
-.track{display:flex;align-items:center;gap:8px;height:26px}
-.fill{flex:none;display:flex;height:100%;border-radius:8px;overflow:hidden;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--out) .1s}
-.acc.open .fill{transform:scaleX(1)}
-/* Thang chung: 1% giá bán trên sàn = 2,4% bề rộng thanh → phí sàn 30% = 72%, affiliate 5–10% = 12–24% */
-.fill.fee{width:72%;align-items:center;justify-content:flex-end;padding-right:9px;background:#F5A623;color:#2B1B00;font-size:12.5px;font-weight:800}
-.fill.aff{width:24%}
-.fill.aff i{display:block;width:50%;height:100%;background:#EC4899}
-.fill.aff i+i{background:repeating-linear-gradient(135deg,rgba(236,72,153,.85) 0 3px,rgba(236,72,153,.25) 3px 6px)}
-.fill.dash{width:12%;border:2px dashed var(--c);border-radius:8px}
-.val{min-width:0;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap}
-.val small{font-size:11.5px;font-weight:500;color:var(--mute)}
+.stk__cap{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:700;color:var(--mute)}
+.stk__cap i{display:block;height:7px;border:1.5px solid rgba(143,179,166,.45);border-bottom:0;border-radius:5px 5px 0 0}
+/* 1 thanh = 100% giá bán trên sàn: affiliate 5–10% (nửa đặc, nửa sọc) và phí sàn 30% đúng tỉ lệ; quảng cáo, chiết khấu không theo tỉ lệ; phần còn lại = giá thực (không ghi số) */
+.stk{display:flex;height:36px;border-radius:9px;overflow:hidden;background:rgba(234,244,240,.04);clip-path:inset(0 100% 0 0);transition:clip-path .9s var(--out) .1s}
+.acc.open .stk{clip-path:inset(0 0 0 0)}
+.seg{display:flex;align-items:center;justify-content:center;height:100%;min-width:0;font-size:12px;font-weight:800;white-space:nowrap}
+.seg.real{flex:1 1 0;background:linear-gradient(90deg,#335E4E,#5FA98C);color:var(--ink)}
+.seg.aff{flex:0 0 10%;padding:0}
+.seg.aff i{display:block;width:50%;height:100%;background:#EC4899}
+.seg.aff i+i{background:repeating-linear-gradient(135deg,rgba(236,72,153,.85) 0 3px,rgba(236,72,153,.25) 3px 6px)}
+.seg.fee{flex:0 0 30%;background:#F5A623;color:#2B1B00}
+.seg.dash{flex:0 0 7%;margin-left:3px;border:2px dashed var(--c);border-radius:6px}
+.stk__lg{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:var(--mute)}
+.stk__lg li{display:flex;align-items:baseline;gap:6px;line-height:1.35}
+.stk__lg b{color:var(--mint);font-weight:800}
+.stk__lg em{font-style:normal;color:var(--ink);font-weight:700}
+.dot{flex:none;align-self:center;width:10px;height:10px;border-radius:3px}
+.dot.dashed{border:2px dashed var(--c);background:transparent}
 .acc__in .chart__sum{margin-top:2px;padding-top:10px;border-top:1px solid rgba(234,244,240,.08);font-size:13px;font-weight:700;line-height:1.4;color:var(--ink)}
 .chart__note{margin-top:-4px;font-size:11.5px!important;color:var(--dim)!important}
 
@@ -453,12 +458,21 @@ h1,h2,p{margin:0}
 .ch__t span{font-size:13.5px;color:var(--mute);text-wrap:pretty}
 .ch__go{font-size:24px;color:var(--mute)}
 .yt{width:0;height:0;margin-left:3px;border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.minis{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.minis>.lbl{grid-column:1/-1}
+.mini{position:relative;display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 12px;border-radius:14px;background:rgba(var(--c),.16);border:1px solid rgba(var(--c),.4);color:var(--ink);text-decoration:none}
+.mini:hover{color:var(--ink)}
+.mini__ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:800}
+.mini__t{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.mini__t b{font-size:15px;font-weight:700;line-height:1.25}
+.mini__t>span{font-size:12px;line-height:1.3;color:var(--mute);text-wrap:pretty}
+.mini__go{flex:none;font-size:22px;line-height:1;color:var(--mute)}
+.mini.hotline{padding:6px 8px 6px 12px;gap:8px}
+.hotline>a{flex:1;min-width:0;display:flex;align-items:center;gap:10px;min-height:44px;color:var(--ink);text-decoration:none}
+.hotline .num{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums}
 .lift{transition:transform .4s var(--spring),border-color .2s}
 .lift:active{transform:scale(.96)}
-.hotline{display:flex;align-items:center;gap:12px}
-.hotline>a{flex:1;min-width:0;display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none;border-radius:12px}
-.hotline .num{font-variant-numeric:tabular-nums;font-weight:800}
-.copy{flex:none;display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(95,227,200,.4);background:rgba(18,179,168,.12);color:var(--mint);font:700 13.5px 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;transition:transform .35s var(--spring)}
+.copy{flex:none;display:flex;align-items:center;gap:6px;height:44px;min-width:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(95,227,200,.4);background:rgba(18,179,168,.12);color:var(--mint);font:700 13.5px 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;transition:transform .35s var(--spring)}
 .copy:active{transform:scale(.92)}
 .copy .ok,.copy.done .ic{display:none}
 .copy.done .ok{display:block}
@@ -530,6 +544,9 @@ footer .f2{font-size:12.5px;color:var(--mute)}
   .top{display:block}
   .wrap{max-width:680px;padding-top:28px}
   .hot{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .minis--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .minis--c{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .minis--c>.hotline{grid-column:1/-1}
   .g2,.g3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .g2>.lbl,.g3>.lbl{grid-column:1/-1}
   .g3>.ch:last-child:nth-child(even){grid-column:1/-1}
@@ -553,15 +570,7 @@ footer .f2{font-size:12.5px;color:var(--mute)}
   .g2 .ch,.g3 .ch{position:relative;flex-direction:column;align-items:flex-start;gap:12px;padding:18px}
   .g2 .ch__go,.g3 .ch__go{position:absolute;top:14px;right:16px}
   .ch__t{flex:0 0 auto}
-  .hotline>a{flex:0 0 auto;flex-direction:column;align-items:flex-start;gap:12px}
-  .hotline .num{font-size:18px}
-  .hotline .copy{margin-top:auto}
   .col-r>.find{order:-1}
-  .contact .ch{padding:14px 16px;gap:10px}
-  .contact .ch__b{width:40px;height:40px;border-radius:12px}
-  .contact .ch__go{top:10px}
-  .contact .hotline>a{gap:10px}
-  .contact .hotline .copy{position:absolute;top:12px;right:12px;height:32px;padding:0 11px;font-size:12.5px;margin:0}
   .rev__all{font-size:14.5px}
   .lbl{padding:4px 2px 0}
   .lbl h2{font-size:20px;font-weight:800;letter-spacing:0;text-transform:none;color:var(--ink)}
@@ -664,10 +673,20 @@ footer .f2{font-size:12.5px;color:var(--mute)}
         <p>Bán qua sàn, mỗi đơn phải gánh <b>phí sàn</b>, <b>phí quảng cáo</b>, <b>chiết khấu</b> và <b>5–10% hoa hồng affiliate</b> cho người review/KOC. Bán trực tiếp trên web thì tụi tôi không phải chịu các khoản đó, nên giá trên web thấp hơn.</p>
         <div class="chart">
           <p class="chart__ttl">Các khoản phí khi bán qua sàn <span>(% giá bán trên sàn)</span></p>
-          <div class="chart__row"><span>Phí sàn</span><div class="track"><div class="fill fee">30%</div></div></div>
-          <div class="chart__row"><span><em class="plus">+</em>Affiliate</span><div class="track"><div class="fill aff"><i></i><i></i></div><span class="val">5–10%</span></div></div>
-          <div class="chart__row"><span><em class="plus">+</em>Quảng cáo</span><div class="track"><div class="fill dash" style="--c:#FF6B66"></div><span class="val"><small>có thêm, tuỳ chương trình</small></span></div></div>
-          <div class="chart__row"><span><em class="plus">+</em>Chiết khấu</span><div class="track"><div class="fill dash" style="--c:#A48BFF"></div><span class="val"><small>có thêm, tuỳ chương trình</small></span></div></div>
+          <div class="stk__cap"><span>Giá bán trên sàn (100%)</span><i></i></div>
+          <div class="stk" role="img" aria-label="Thanh 100% giá bán trên sàn gồm giá thực, cộng affiliate 5 đến 10 phần trăm, cộng phí sàn 30 phần trăm, cộng quảng cáo và chiết khấu có thêm tuỳ chương trình">
+            <span class="seg real">giá thực</span>
+            <span class="seg aff"><i></i><i></i></span>
+            <span class="seg fee">30%</span>
+            <span class="seg dash" style="--c:#FF6B66"></span>
+            <span class="seg dash" style="--c:#A48BFF"></span>
+          </div>
+          <ul class="stk__lg">
+            <li><i class="dot" style="background:#EC4899"></i><b>+</b> <span>Affiliate <em>5–10%</em></span></li>
+            <li><i class="dot" style="background:#F5A623"></i><b>+</b> <span>Phí sàn <em>30%</em></span></li>
+            <li><i class="dot dashed" style="--c:#FF6B66"></i><b>+</b> <span>Quảng cáo <em>có thêm, tuỳ chương trình</em></span></li>
+            <li><i class="dot dashed" style="--c:#A48BFF"></i><b>+</b> <span>Chiết khấu <em>có thêm, tuỳ chương trình</em></span></li>
+          </ul>
           <p class="chart__sum">Các khoản này cộng dồn, không nằm chung trong 30%.</p>
         </div>
         <p class="chart__note">Phí sàn, affiliate đúng tỉ lệ · chênh tuỳ sản phẩm</p>
@@ -728,36 +747,14 @@ footer .f2{font-size:12.5px;color:var(--mute)}
       </a>
     </section>
 
-    <section class="list g3 rv" style="--i:6">
-      <div class="lbl"><h2>Xem review trước khi mua</h2></div>
-      <a class="ch lift" data-link="YT_EH_URL" href="#" style="--hc:rgba(255,0,0,.6)">
-        <span class="ch__b" style="background:#FF0000"><span class="yt"></span></span>
-        <span class="ch__t"><b>YouTube Easy Home</b><span>Tự tay mở hộp &amp; trải nghiệm</span></span><span class="ch__go">›</span>
-      </a>
-      <a class="ch lift" data-link="YT_CT_URL" href="#" style="--hc:rgba(255,0,0,.6)">
-        <span class="ch__b" style="background:#FF0000"><span class="yt"></span></span>
-        <span class="ch__t"><b>YouTube Checker Tech</b><span>Việt hoá review công nghệ quốc tế</span></span><span class="ch__go">›</span>
-      </a>
-      <a class="ch lift" data-link="BLOG_URL" href="#" style="--hc:rgba(18,179,168,.65)">
-        <span class="ch__b" style="background:#0E8F86"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></span>
-        <span class="ch__t"><b>Blog Đánh Giá Công Nghệ</b><span>Bài chuyên sâu, so sánh &amp; kinh nghiệm chọn mua</span></span><span class="ch__go">›</span>
-      </a>
-    </section>
-
-    <section class="list g3 contact rv" style="--i:7">
+    <section class="minis minis--c rv" style="--i:7" aria-label="Liên hệ và tư vấn">
       <div class="lbl"><h2>Liên hệ &amp; tư vấn</h2></div>
-      <a class="ch lift" data-link="FB_URL" href="#" style="--hc:rgba(24,119,242,.7)">
-        <span class="ch__b" style="background:#1877F2;font:800 26px Arial,sans-serif;padding-top:4px">f</span>
-        <span class="ch__t"><b>Facebook chủ shop</b><span>Trang cá nhân, kết bạn để xem ảnh hàng thật</span></span><span class="ch__go">›</span>
-      </a>
-      <a class="ch lift" data-link="ZALO_URL" href="#" style="--hc:rgba(0,104,255,.75)">
-        <span class="ch__b" style="background:#0068FF;font-size:12.5px">Zalo</span>
-        <span class="ch__t"><b>Chat Zalo</b><span>Tư vấn chọn mẫu, báo giá nhanh</span></span><span class="ch__go">›</span>
-      </a>
-      <div class="ch hotline lift" style="--hc:rgba(31,160,90,.7)">
+      <a class="mini lift" data-link="FB_URL" href="#" style="--c:24,119,242;--hc:rgba(24,119,242,.85)"><span class="mini__ic" style="background:#1877F2;font:800 22px Arial,sans-serif;padding-top:3px">f</span><span class="mini__t"><b>Facebook chủ shop</b><span>Trang cá nhân, kết bạn để xem ảnh hàng thật</span></span><span class="mini__go">›</span></a>
+      <a class="mini lift" data-link="ZALO_URL" href="#" style="--c:0,104,255;--hc:rgba(0,104,255,.85)"><span class="mini__ic" style="background:#0068FF;font-size:11px">Zalo</span><span class="mini__t"><b>Chat Zalo</b><span>Tư vấn chọn mẫu, báo giá nhanh</span></span><span class="mini__go">›</span></a>
+      <div class="mini hotline lift" style="--c:31,160,90;--hc:rgba(31,160,90,.85)">
         <a data-tel href="#">
-          <span class="ch__b" style="background:#1FA05A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span class="ch__t"><b class="num" data-hotline>070.251.6668</b><span>Hotline <span data-cfg="OPEN_HOURS">8:00–21:00 · Mở cả tuần</span></span></span>
+          <span class="mini__ic" style="background:#1FA05A"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="mini__t"><b class="num" data-hotline>070.251.6668</b><span>Hotline <span data-cfg="OPEN_HOURS">8:00–21:00 · Mở cả tuần</span></span></span>
         </a>
         <button class="copy" type="button">
           <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -765,6 +762,13 @@ footer .f2{font-size:12.5px;color:var(--mute)}
           <span class="t1">Copy số</span><span class="t2">Đã copy</span>
         </button>
       </div>
+    </section>
+
+    <section class="minis minis--3 rv" style="--i:8" aria-label="Xem review trước khi mua">
+      <div class="lbl"><h2>Xem review trước khi mua</h2></div>
+      <a class="mini lift" data-link="YT_EH_URL" href="#" style="--c:18,179,168;--hc:rgba(18,179,168,.85)"><span class="mini__t"><b>YouTube Easy Home</b><span>Mở hộp &amp; trải nghiệm</span></span><span class="mini__go">›</span></a>
+      <a class="mini lift" data-link="YT_CT_URL" href="#" style="--c:59,130,246;--hc:rgba(59,130,246,.85)"><span class="mini__t"><b>YouTube Checker Tech</b><span>Review công nghệ Việt hoá</span></span><span class="mini__go">›</span></a>
+      <a class="mini lift" data-link="BLOG_URL" href="#" style="--c:245,166,35;--hc:rgba(245,166,35,.85)"><span class="mini__t"><b>Blog Đánh Giá Công Nghệ</b><span>Bài chuyên sâu, so sánh</span></span><span class="mini__go">›</span></a>
     </section>
 
     <section class="list rv" style="--i:8">
