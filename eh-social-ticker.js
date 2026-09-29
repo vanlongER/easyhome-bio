@@ -112,7 +112,7 @@
     // 1) Đơn thật: trộn đơn web (có tên, tỉnh) + đơn sàn đã giao, ưu tiên mới nhất
     const web = fresh(data.items, 'w:').map(({ x, k }) => ({ key: k, t: x.t, live: true, url: CFG.SHOP_URL,
       html: `<b>${esc(x.name)}</b>${x.place ? ' (' + esc(x.place) + ')' : ''} ${Date.now() - x.t < 3 * 36e5 ? 'vừa đặt' : 'đã đặt'} <span class="pr">${esc(x.product)}</span><small>${ago(x.t)} · đặt trên web</small>` }));
-    const shop = fresh(data.shop, 's:').map(({ x, k }) => ({ key: k, t: x.t, live: true, icon: '✅', url: CFG.SHOP_URL,
+    const shop = fresh(data.shop, 's:').map(({ x, k }) => ({ key: k, t: x.t, live: true, icon: '✅', url: null,   // dữ liệu sàn: SP có thể không có trên web -> không gắn link
       html: `Khách ${esc(x.platform)} đã nhận <span class="pr">${esc(x.product)}</span>${x.qty > 1 ? ' ×' + x.qty : ''}<small>${agoDate(x.t)} · giao thành công</small>` }));
     // lấy mới nhất nhưng xen kẽ web/sàn cho đa dạng
     web.sort((a, b) => b.t - a.t); shop.sort((a, b) => b.t - a.t);
@@ -126,8 +126,8 @@
 
     // 2) Sản phẩm bán chạy (số lượng thật 30 ngày)
     fresh(data.best, 'b:').sort(() => Math.random() - 0.5).slice(0, CFG.MAX_BEST_PER_VISIT)
-      .forEach(({ x, k }) => q.push({ key: k, icon: '🔥', url: CFG.SHOP_URL,
-        html: `<span class="pr">${esc(x.product)}</span> đã giao <b>${x.qty} chiếc</b><small>trong ${x.days} ngày qua</small>` }));
+      .forEach(({ x, k }) => q.push({ key: k, icon: '🔥', url: null,   // dữ liệu sàn: không gắn link
+        html: `<span class="pr">${esc(x.product)}</span> đã giao <b>${x.qty} chiếc</b> trên sàn<small>trong ${x.days} ngày qua</small>` }));
 
     // 3) Số liệu tổng – mỗi khách 1 lần/ngày, chọn 1 trong 2 kiểu
     const s = data.stats || {}, sk = 's:' + new Date().toDateString();
