@@ -389,18 +389,23 @@ h1,h2,p{margin:0}
 .acc__in p{font-size:14.5px;line-height:1.6;color:#C9DDD5;text-wrap:pretty}
 .acc__in b{color:var(--ink)}
 .chart{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:14px;background:#0D1915;border:1px solid rgba(234,244,240,.05)}
-.chart__row{display:grid;grid-template-columns:62px minmax(0,1fr);align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--mute)}
-.chart__row.web{color:var(--mint);font-weight:700}
-.track{height:26px;border-radius:8px;background:rgba(234,244,240,.04);overflow:hidden}
-.fill{display:flex;height:100%;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--out) .1s}
-.fill i{height:100%}
-.web .fill{width:70%;border-radius:8px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);box-shadow:0 0 16px rgba(18,179,168,.55);align-items:center;justify-content:flex-end;padding-right:8px;color:#03231F;font-size:12px;font-weight:800;transition-delay:.3s}
-.web .track{overflow:visible}
+.acc__in .chart__ttl{font-size:12.5px;font-weight:700;line-height:1.35;color:var(--ink)}
+.chart__ttl span{font-weight:500;color:var(--mute)}
+.chart__row{display:grid;grid-template-columns:88px minmax(0,1fr);align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mute)}
+.chart__row .plus{margin-right:4px;color:var(--mint);font-size:16px;font-weight:800;font-style:normal;line-height:1}
+.track{display:flex;align-items:center;gap:8px;height:26px}
+.fill{flex:none;display:flex;height:100%;border-radius:8px;overflow:hidden;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--out) .1s}
 .acc.open .fill{transform:scaleX(1)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;padding-left:72px;font-size:12px;color:var(--mute)}
-.legend span{display:flex;align-items:center;gap:6px}
-.legend i{width:8px;height:8px;border-radius:2px}
-.chart__note{margin-top:-4px;font-size:12px!important;color:var(--dim)!important}
+/* Thang chung: 1% giá bán trên sàn = 2,4% bề rộng thanh → phí sàn 30% = 72%, affiliate 5–10% = 12–24% */
+.fill.fee{width:72%;align-items:center;justify-content:flex-end;padding-right:9px;background:#F5A623;color:#2B1B00;font-size:12.5px;font-weight:800}
+.fill.aff{width:24%}
+.fill.aff i{display:block;width:50%;height:100%;background:#EC4899}
+.fill.aff i+i{background:repeating-linear-gradient(135deg,rgba(236,72,153,.85) 0 3px,rgba(236,72,153,.25) 3px 6px)}
+.fill.dash{width:12%;border:2px dashed var(--c);border-radius:8px}
+.val{min-width:0;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+.val small{font-size:11.5px;font-weight:500;color:var(--mute)}
+.acc__in .chart__sum{margin-top:2px;padding-top:10px;border-top:1px solid rgba(234,244,240,.08);font-size:13px;font-weight:700;line-height:1.4;color:var(--ink)}
+.chart__note{margin-top:-4px;font-size:11.5px!important;color:var(--dim)!important}
 
 /* Cam kết */
 .promise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -656,28 +661,16 @@ footer .f2{font-size:12.5px;color:var(--mute)}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB3A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="acc__body" id="acc-why"><div><div class="acc__in">
-        <p>Bán qua sàn, mỗi đơn phải gánh <b>phí sàn</b>, <b>phí quảng cáo</b>, <b>chiết khấu</b> và <b>5–10% hoa hồng affiliate</b> cho người review/KOC. Bán trực tiếp trên web, tụi tôi cắt hết các khoản đó và trả lại thẳng vào giá cho bạn.</p>
+        <p>Bán qua sàn, mỗi đơn phải gánh <b>phí sàn</b>, <b>phí quảng cáo</b>, <b>chiết khấu</b> và <b>5–10% hoa hồng affiliate</b> cho người review/KOC. Bán trực tiếp trên web thì tụi tôi không phải chịu các khoản đó, nên giá trên web thấp hơn.</p>
         <div class="chart">
-          <div class="chart__row"><span>Giá sàn</span>
-            <div class="track"><div class="fill">
-              <i style="width:70%;background:linear-gradient(90deg,#335E4E,#5FA98C)"></i>
-              <i style="width:8%;background:#F5A623"></i>
-              <i style="width:8%;background:#E53935"></i>
-              <i style="width:6%;background:#7C4DFF"></i>
-              <i style="width:8%;background:#EC4899"></i>
-            </div></div>
-          </div>
-          <div class="chart__row web"><span>Giá web</span>
-            <div class="track"><div class="fill">−30%</div></div>
-          </div>
-          <div class="legend">
-            <span><i style="background:#F5A623"></i>Phí sàn</span>
-            <span><i style="background:#E53935"></i>Quảng cáo</span>
-            <span><i style="background:#7C4DFF"></i>Chiết khấu</span>
-            <span><i style="background:#EC4899"></i>Phí Affiliate (5–10%)</span>
-          </div>
+          <p class="chart__ttl">Các khoản phí khi bán qua sàn <span>(% giá bán trên sàn)</span></p>
+          <div class="chart__row"><span>Phí sàn</span><div class="track"><div class="fill fee">30%</div></div></div>
+          <div class="chart__row"><span><em class="plus">+</em>Affiliate</span><div class="track"><div class="fill aff"><i></i><i></i></div><span class="val">5–10%</span></div></div>
+          <div class="chart__row"><span><em class="plus">+</em>Quảng cáo</span><div class="track"><div class="fill dash" style="--c:#FF6B66"></div><span class="val"><small>có thêm, tuỳ chương trình</small></span></div></div>
+          <div class="chart__row"><span><em class="plus">+</em>Chiết khấu</span><div class="track"><div class="fill dash" style="--c:#A48BFF"></div><span class="val"><small>có thêm, tuỳ chương trình</small></span></div></div>
+          <p class="chart__sum">Các khoản này cộng dồn, không nằm chung trong 30%.</p>
         </div>
-        <p class="chart__note">Minh hoạ theo tỉ lệ — mức chênh thực tế tuỳ sản phẩm.</p>
+        <p class="chart__note">Phí sàn, affiliate đúng tỉ lệ · chênh tuỳ sản phẩm</p>
       </div></div></div>
     </section>
 
