@@ -10,7 +10,7 @@
  */
 (function () {
   const CFG = {
-    ORDERS_URL: 'https://script.google.com/macros/s/XXXX/exec', // URL deploy eh-recent-orders.gs
+    ORDERS_URL: 'https://script.google.com/macros/s/AKfycbzNCTkgEsahkjMN8Y-Y1AD0KdrEJcjsVruEAlrlpMClceI9oLQMlCG0uCR8H497ptJg/exec', // URL deploy eh-recent-orders.gs
     SHOP_URL: 'https://easyhome.requa.vn',
     FIRST_DELAY: [7000, 14000],
     GAP: [16000, 58000],
@@ -81,7 +81,7 @@
   .ehtk .x{position:absolute;right:6px;top:6px;width:24px;height:24px;border:0;border-radius:50%;background:transparent;color:#8FB3A6;cursor:pointer;font-size:15px}
   .ehtk .x:hover{background:rgba(255,255,255,.08)}
   @keyframes ehtkPing{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.6);opacity:0}}
-  @media (max-width:520px){.ehtk{left:10px;right:10px;max-width:none;bottom:84px}}
+  @media (max-width:520px){.ehtk{left:10px;right:10px;max-width:none;bottom:calc(84px + env(safe-area-inset-bottom))}}
   @media (prefers-reduced-motion:reduce){.ehtk{transition:opacity .2s;transform:none}.ehtk .dot::after{animation:none}}`;
   document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
   const box = document.createElement('div');
@@ -111,7 +111,7 @@
 
     // 1) Đơn thật: trộn đơn web (có tên, tỉnh) + đơn sàn đã giao, ưu tiên mới nhất
     const web = fresh(data.items, 'w:').map(({ x, k }) => ({ key: k, t: x.t, live: true, url: CFG.SHOP_URL,
-      html: `<b>${esc(x.name)}</b>${x.place ? ' (' + esc(x.place) + ')' : ''} vừa đặt <span class="pr">${esc(x.product)}</span><small>${ago(x.t)} · đặt trên web</small>` }));
+      html: `<b>${esc(x.name)}</b>${x.place ? ' (' + esc(x.place) + ')' : ''} ${Date.now() - x.t < 3 * 36e5 ? 'vừa đặt' : 'đã đặt'} <span class="pr">${esc(x.product)}</span><small>${ago(x.t)} · đặt trên web</small>` }));
     const shop = fresh(data.shop, 's:').map(({ x, k }) => ({ key: k, t: x.t, live: true, icon: '✅', url: CFG.SHOP_URL,
       html: `Khách ${esc(x.platform)} đã nhận <span class="pr">${esc(x.product)}</span>${x.qty > 1 ? ' ×' + x.qty : ''}<small>${agoDate(x.t)} · giao thành công</small>` }));
     // lấy mới nhất nhưng xen kẽ web/sàn cho đa dạng
