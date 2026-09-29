@@ -87,23 +87,20 @@ ready(() => {
   $$('[data-legal]').forEach(el => { el.hidden = !(CONFIG.BUSINESS_NAME && CONFIG.TAX_ID); });   // chưa đủ tên + MST thật thì không hiện
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // Mascot: PNG tĩnh → GIF khi tải xong (hero: sau window load; xe đạp: khi sắp cuộn tới). Reduced-motion: chỉ PNG.
+  // Mascot: PNG tĩnh → GIF khi tải xong. Hero vẫy tay: sau window load; xe đạp: ngay sau khi GIF vẫy tay xong, lúc trình duyệt rảnh
+  // (không đợi cuộn tới nữa). Reduced-motion: chỉ PNG, không tải GIF.
   if (!reduced) {
-    const swapGif = img => {
-      if (img.dataset.done) return; img.dataset.done = '1';
+    const swapGif = img => new Promise(done => {
+      if (img.dataset.done) return done(); img.dataset.done = '1';
       const g = new Image();
-      g.onload = () => { img.classList.add('swap'); setTimeout(() => { img.src = g.src; img.classList.remove('swap'); }, 200); };
+      g.onload = () => { img.classList.add('swap'); setTimeout(() => { img.src = g.src; img.classList.remove('swap'); done(); }, 200); };
+      g.onerror = done;   // GIF lỗi → giữ PNG
       g.src = img.dataset.gif;
-    };
-    const heroGif = () => $$('.eh-anim[data-when="load"]').forEach(swapGif);
+    });
+    const idle = f => 'requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 3000 }) : setTimeout(f, 800);
+    const heroGif = () => Promise.all($$('.eh-anim[data-when="load"]').map(swapGif))
+      .then(() => idle(() => $$('.eh-anim[data-when="view"]').forEach(swapGif)));   // cùng URL → tải 1 lần, ảnh còn lại lấy từ cache
     document.readyState === 'complete' ? heroGif() : addEventListener('load', heroGif, { once: true });
-    const lazy = $$('.eh-anim[data-when="view"]');
-    if ('IntersectionObserver' in window) {
-      const gio = new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting && e.target.offsetParent !== null) { gio.unobserve(e.target); swapGif(e.target); }
-      }), { rootMargin: '200px' });
-      lazy.forEach(i => gio.observe(i));
-    } else lazy.forEach(swapGif);
   }
 
   // Đếm số
@@ -636,7 +633,7 @@ footer .f2{font-size:12.5px;color:var(--mute)}
       </div>
       <div class="mascot" aria-hidden="true">
         <span class="sh"></span>
-        <img class="eh-anim" src="assets/mascot_wave_poster.png" data-gif="assets/mascot_wave_transparent.gif" data-when="load" alt="" width="128" height="148" decoding="async" fetchpriority="high">
+        <img class="eh-anim" src="assets/mascot_wave_poster.png" data-gif="assets/mascot_wave_transparent_v2.gif" data-when="load" alt="" width="128" height="148" decoding="async" fetchpriority="high">
       </div>
     </header>
 
@@ -700,7 +697,7 @@ footer .f2{font-size:12.5px;color:var(--mute)}
       <div class="pk" style="--c:124,77,255;--ic:#C3B0FF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5"/><path d="M3 9h18"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>Cửa hàng thật tại Hà Nội</div>
     </section>
     <div class="bike-l rv" style="--i:4">
-      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent.gif" data-when="view" alt="" width="225" height="127" loading="lazy" decoding="async">
+      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent_v2.gif" data-when="view" alt="" width="225" height="127" loading="lazy" decoding="async">
       <span class="f1">Giao nhanh toàn quốc · Đổi trả 7 ngày</span>
       <span class="f2">© 2026 EasyHome. Kênh bán chính thức.</span>
       <span class="f3" data-legal hidden>Hộ kinh doanh <span data-cfg="BUSINESS_NAME"></span> · MST: <span data-cfg="TAX_ID"></span></span>
@@ -786,7 +783,7 @@ footer .f2{font-size:12.5px;color:var(--mute)}
     </section>
 
     <footer class="rv" style="--i:9">
-      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent.gif" data-when="view" alt="Kỹ sư EasyHome giao hàng" width="150" height="84" loading="lazy" decoding="async">
+      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent_v2.gif" data-when="view" alt="Kỹ sư EasyHome giao hàng" width="150" height="84" loading="lazy" decoding="async">
       <span class="f1">Giao nhanh toàn quốc · Đổi trả 7 ngày</span>
       <span class="f2">© 2026 EasyHome. Kênh bán chính thức.</span>
       <span class="f3" data-legal hidden>Hộ kinh doanh <span data-cfg="BUSINESS_NAME"></span> · MST: <span data-cfg="TAX_ID"></span></span>
