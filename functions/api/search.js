@@ -21,6 +21,7 @@ const SITE_BASE = "https://easyhome.requa.vn/";
 const CATALOG_CACHE_TTL_SECONDS = 300; // 5 minutes
 const CACHE_KEY_URL = "https://easyhome.vn/__catalog-cache__/tenant-" + TENANT_ID;
 const MAX_RESULTS = 6;
+const MAX_RANDOM = 24;
 const MAX_KEYWORD_LENGTH = 60;
 const CATALOG_PAGE_SIZE = 500;
 const CATALOG_MAX_PAGES = 10; // safety ceiling in case total_records is ever wrong
@@ -167,6 +168,28 @@ function toCard(item) {
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
   const keyword = sanitizeKeyword(url.searchParams.get("q"));
+
+  // GET /api/search?random=1&limit=N -- N random in-stock products (with image) from the cached
+  // catalog, for "Gợi ý cho bạn" blocks. One round-trip, no keyword needed, no price field.
+  if (url.searchParams.get("random") === "1") {
+    const limit = Math.min(Math.max(parseInt(url.searchParams.get("limit"), 10) || 12, 1), MAX_RANDOM);
+    let cat;
+    try {
+      cat = await loadCatalog(context);
+    } catch (err) {
+      return jsonResponse({ success: false, error: "catalog_unavailable" }, 502);
+    }
+    const pool = cat.filter(function (p) {
+      return p.in_stock !== false && !!p.res_thumbnail_url;
+    });
+    // partial Fisher-Yates: only shuffle the first `limit` positions
+    for (let i = 0; i < Math.min(limit, pool.length); i++) {
+      const j = i + Math.floor(Math.random() * (pool.length - i));
+      const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+    }
+    const picked = pool.slice(0, limit).map(toCard);
+    return jsonResponse({ success: true, data: { items: picked, total: pool.length } });
+  }
 
   if (keyword.length < 2) {
     return jsonResponse({ success: true, data: { items: [], total: 0 } });

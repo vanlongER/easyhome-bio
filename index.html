@@ -1,513 +1,792 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>EasyHome — Đơn giản hoá ngôi nhà của bạn</title>
-<meta name="description" content="Mua đồ gia dụng, phụ kiện điện thoại chính hãng EasyHome — giá tốt nhất khi mua trực tiếp, không qua sàn. Xem review trên YouTube trước khi mua.">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://easyhome.vn/">
-<meta property="og:title" content="EasyHome — Đơn giản hoá ngôi nhà của bạn">
-<meta property="og:description" content="Mua đồ gia dụng, phụ kiện điện thoại chính hãng EasyHome — giá tốt nhất khi mua trực tiếp, không qua sàn.">
-<meta property="og:image" content="https://easyhome.vn/assets/anhbia.jpg">
-<meta property="og:image:width" content="583">
-<meta property="og:image:height" content="237">
-<meta property="og:locale" content="vi_VN">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EasyHome — Đơn giản hoá ngôi nhà của bạn">
-<meta name="twitter:description" content="Mua đồ gia dụng, phụ kiện điện thoại chính hãng EasyHome — giá tốt nhất, không qua sàn.">
-<meta name="twitter:image" content="https://easyhome.vn/assets/anhbia.jpg">
-
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#12B3A8">
-<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<meta name="description" content="Mua trực tiếp trên web EasyHome – rẻ hơn tới 30% so với mua qua sàn. COD, kiểm tra hàng trước khi trả tiền, đổi trả 7 ngày, cửa hàng thật tại Hà Nội.">
+<meta name="theme-color" content="#0A1512">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="preload" as="image" href="assets/mascot_wave_poster.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<style>
-  html, body { margin: 0; padding: 0; }
-  body { font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif; background: #F4F1EA; -webkit-font-smoothing: antialiased; }
-  a { color: #2F7F63; text-decoration: none; }
-  a:hover { color: #24614B; }
-  * { box-sizing: border-box; }
-  @keyframes ehFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-  @keyframes ehShadow { 0%,100% { transform: scaleX(1); opacity: .18; } 50% { transform: scaleX(.88); opacity: .12; } }
-  @keyframes ehRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes ehSheen { 0% { transform: translateX(-120%); } 55%,100% { transform: translateX(320%); } }
-  @keyframes ehNudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
-  @keyframes ehGlow { 0% { box-shadow: 0 8px 24px rgba(18,179,168,.25); } 100% { box-shadow: 0 12px 40px rgba(18,179,168,.5); } }
-  @keyframes ehGlowHover { 0% { box-shadow: 0 10px 30px rgba(18,179,168,.35); } 100% { box-shadow: 0 16px 50px rgba(18,179,168,.65); } }
-  .eh-cta-main { animation: ehGlow 2.5s ease-in-out infinite alternate; animation-play-state: running; }
-  .eh-cta-main:active { animation-play-state: running; }
-  @media (hover: hover) and (pointer: fine) {
-    .eh-cta-main:hover { animation: ehGlowHover .8s ease-in-out infinite alternate; }
-  }
-  @keyframes ehPing { 0% { transform: scale(.55); opacity: .55; } 70% { transform: scale(1.9); opacity: 0; } 100% { transform: scale(1.9); opacity: 0; } }
-  @keyframes ehSearchPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(18,179,168,.14), 0 2px 8px rgba(18,179,168,.10); }
-    50% { box-shadow: 0 0 0 7px rgba(18,179,168,.08), 0 4px 16px rgba(18,179,168,.24); }
-  }
-  .eh-search-input { border: 2px solid #12B3A8; background: #FFFFFF; color: #16324F; transition: border-color .16s ease, box-shadow .16s ease; animation: ehSearchPulse 2.2s ease-in-out infinite; }
-  .eh-search-input::placeholder { color: rgba(22,50,79,.42); }
-  .eh-search-input:focus { animation: none; border-color: #0E8F86; box-shadow: 0 0 0 4px rgba(18,179,168,.18); }
-  .eh-search-btn { background: linear-gradient(135deg, #1AC9BD 0%, #0E8F86 100%); box-shadow: 0 4px 12px rgba(18,179,168,.32); transition: transform .14s ease, box-shadow .14s ease; }
-  .eh-search-btn:hover { transform: scale(1.07); box-shadow: 0 6px 18px rgba(18,179,168,.42); }
-  .eh-search-btn:active { transform: scale(.94); box-shadow: 0 3px 8px rgba(18,179,168,.3); }
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; }
-    .eh-cta-main { box-shadow: 0 8px 24px rgba(18,179,168,.25) !important; }
-  }
-</style>
-</helmet>
-<div style="min-height: 100vh; background:
-    radial-gradient(circle at 50% 0%, rgba(95,169,140,.20), rgba(95,169,140,0) 58%),
-    radial-gradient(circle at 12% 82%, rgba(95,169,140,.10), rgba(95,169,140,0) 45%),
-    #F4F1EA; padding: 0 20px 44px;">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
 
-  <a href="https://easyhome.requa.vn" style="position: absolute; top: 20px; left: 20px; display: block; width: 32px; height: 32px; border-radius: 9px; overflow: hidden;">
-    <img src="assets/eh-square.png" alt="EasyHome" style="display: block; width: 100%; height: 100%; object-fit: cover;">
-  </a>
+<script>
+/* ===== CẤU HÌNH — chỉ cần sửa ở đây ===== */
+const CONFIG = {
+  HOTLINE:    "070.251.6668",
+  TEL:        "+84702516668",   // dạng quốc tế cho tel:
+  WEB_URL:    "https://easyhome.requa.vn",
+  SEARCH_URL: "https://easyhome.requa.vn/tim-kiem?q=",
+  ZALO_URL:   "https://zalo.me/0702516668",
+  FB_URL:     "https://www.facebook.com/share/1DzwJccLXx/",
+  SHOPEE_URL: "https://vn.shp.ee/BdG9kXkb",
+  TIKTOK_URL: "https://www.tiktok.com/@easy_home_vn",
+  YT_EH_URL:  "https://www.youtube.com/@EasyHomeVn",
+  YT_CT_URL:  "https://www.youtube.com/@Checkertech",
+  BLOG_URL:   "https://blog.easyhome.vn/",
+  MAPS_URL:   "https://www.google.com/maps/dir/?api=1&destination=Easy+Home,+T%C3%B2a+C+Vinaconex+2,+Kim+V%C4%83n+Kim+L%C5%A9,+%C4%90%E1%BB%8Bnh+C%C3%B4ng,+H%C3%A0+N%E1%BB%99i",
+  GOOGLE_REVIEWS_URL: "https://maps.app.goo.gl/uxioLdmgJzt9cUni8",
 
-  <div style="max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+  ADDRESS:       "Tòa C Vinaconex 2, KĐT Kim Văn Kim Lũ, Định Công, Hà Nội",
+  OPEN_HOURS:    "8:00–21:00 · Mở cả tuần",
+  SHIP_NOTE:     "Giao hàng chỉ 1–4 ngày",
+  BUSINESS_NAME: "EASY HOME VN",   // đúng như giấy đăng ký; để trống → ẩn dòng pháp lý ở chân trang
+  TAX_ID:        "8718016339-001",
 
-    <div style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 74px; animation: ehRise .6s ease both;">
-      <img src="assets/mascot_wave_transparent.gif" alt="EasyHome mascot" style="display: block; width: 214px; height: 214px; object-fit: contain; animation: ehFloat 4.2s ease-in-out infinite; filter: drop-shadow(0 12px 18px rgba(35,54,47,.10));">
-      <div style="width: 116px; height: 13px; border-radius: 50%; background: #233 ; opacity: .16; filter: blur(5px); margin-top: -6px; animation: ehShadow 4.2s ease-in-out infinite;"></div>
-    </div>
+  /* Function tìm kiếm cùng origin (functions/api/search.js) — trả {success, data:{items:[{product_name, link, thumbnail_url, in_stock…}], total}}, KHÔNG có giá.
+     Khối “Gợi ý cho bạn” = ?random=1 (SP còn hàng, ngẫu nhiên từ catalog thật); lỗi/quá 4 giây → ẩn khối, không để skeleton quay mãi. */
+  SEARCH_API: "/api/search",
+  HOT_API_URL: "/api/search?random=1&limit=4",
+  FALLBACK_PRODUCTS: [],   // không dùng SP mẫu; lỗi API → ẩn khối
 
-    <img src="assets/eh-logo.png" alt="EasyHome." style="display: block; width: 244px; max-width: 76%; height: auto; margin: 18px 0 0; animation: ehRise .6s .08s ease both;">
+  REVIEWS: [   // review Google thật, chép nguyên văn; tên/ngày người viết chưa có nên để chung
+    { name: "Khách trên Google", stars: 5, text: "Hàng chính hãng, giá tốt", date: "" },
+    { name: "Khách trên Google", stars: 5, text: "Shop nhiệt tình, mỗi tội hơi xa", date: "" },
+    { name: "Khách trên Google", stars: 5, text: "Shop giờ có web, mua tiện, đỡ phải đến nơi", date: "" }
+  ]
+};
 
-    <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; font-weight: 500; color: #5B6560; text-align: center; text-wrap: pretty; animation: ehRise .6s .14s ease both;">
-      Chọn kênh bạn muốn mua. Mua ở website là <strong style="color: #2F7F63; font-weight: 700;">rẻ nhất</strong> — vì không mất phí sàn.
-    </p>
+const ready = f => document.readyState !== 'loading' ? f() : document.addEventListener('DOMContentLoaded', f);
+ready(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const mq = q => matchMedia(q).matches;
+  const reduced = mq('(prefers-reduced-motion: reduce)');
+  const fine = () => mq('(hover: hover) and (pointer: fine)');
+  const desk = () => mq('(min-width: 1024px)');
 
-    <a class="eh-cta-main" href="{{ primaryHref }}" target="_blank" rel="noopener" style="position: relative; display: block; width: 100%; margin-top: 26px; padding: 20px 22px 19px; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #6DB89A 0%, #4E9679 52%, #2F7F63 100%); box-shadow: 0 8px 24px rgba(18,179,168,.25); transition: transform .18s ease;" style-hover="transform: translateY(-3px);" style-active="transform: translateY(0);">
-      <span style="position: absolute; top: 0; left: 0; width: 34%; height: 100%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.34), rgba(255,255,255,0)); animation: ehSheen 3.6s ease-in-out 1.2s infinite; pointer-events: none;"></span>
-      <span style="position: absolute; top: 11px; right: 12px; display: inline-block; padding: 5px 12px 4px; border-radius: 999px; background: linear-gradient(140deg, #FFDC7A, #FFC24D); color: #3D2B00; font-size: 14px; font-weight: 900; letter-spacing: .01em; box-shadow: 0 3px 8px rgba(61,43,0,.22);">{{ badgeText }}</span>
-      <span style="display: block; padding-right: 96px; color: #FFFFFF; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25;">Mua trực tiếp – Rẻ hơn tới 30%</span>
-      <span style="display: block; margin-top: 5px; color: rgba(255,255,255,.86); font-size: 12.5px; font-weight: 500;">Không qua sàn · Không phí trung gian</span>
-      <span style="position: absolute; top: 50%; right: 16px; transform: translateY(-50%); pointer-events: none;">
-        <span style="display: block; color: #FFFFFF; font-size: 20px; font-weight: 600; opacity: .85; animation: ehNudge 1.5s ease-in-out infinite;">›</span>
-      </span>
-    </a>
+  // Link + hotline
+  $$('[data-link]').forEach(a => { const u = CONFIG[a.dataset.link]; if (u) a.href = u; });
+  if (fine()) $$('[data-link="ZALO_URL"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+  const tel = CONFIG.TEL || ('+84' + CONFIG.HOTLINE.replace(/\D/g, '').replace(/^0/, ''));
+  const copyNum = CONFIG.HOTLINE.replace(/\D/g, '');   // copy số nội địa 0702516668
+  $$('[data-tel]').forEach(a => a.href = 'tel:' + tel);
+  $$('[data-hotline]').forEach(el => el.textContent = CONFIG.HOTLINE);
+  $$('[data-cfg]').forEach(el => { const v = CONFIG[el.dataset.cfg]; if (v) el.textContent = v; });
+  $$('[data-legal]').forEach(el => { el.hidden = !(CONFIG.BUSINESS_NAME && CONFIG.TAX_ID); });   // chưa đủ tên + MST thật thì không hiện
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-    <div style="width: 100%; margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.55); animation: ehRise .6s .2s ease both;">
-      <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #4A5850;">
-        <span style="font-size: 13px;">💡</span> Vì sao mua ở web rẻ hơn?
-      </span>
-      <p style="margin: 6px 0 0; font-size: 13px; line-height: 1.6; color: #6B7C8C;">Bán qua sàn phải chịu phí sàn, phí quảng cáo, chiết khấu gian hàng. Bán trực tiếp, tụi tôi cắt hết phần đó và trả lại cho bạn.</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; margin-top: 10px; animation: ehRise .6s .24s ease both;">
-      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
-        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Thanh toán khi nhận (COD)
-      </span>
-      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
-        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Kiểm tra hàng trước khi trả tiền
-      </span>
-      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
-        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Đổi trả trong 7 ngày
-      </span>
-      <span style="display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 12px; font-weight: 600; color: #232F2A; line-height: 1.35;">
-        <span style="color: #12B3A8; font-size: 13px; font-weight: 800; flex-shrink: 0;">✓</span> Cửa hàng thật tại Hà Nội
-      </span>
-    </div>
-
-    <div style="width: 100%; margin-top: 16px; animation: ehRise .6s .25s ease both;">
-      <span style="display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #4A5850; letter-spacing: .01em;">🔍 Tìm nhanh sản phẩm</span>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <input id="eh-search-input" class="eh-search-input" type="text" inputmode="search" autocomplete="off" placeholder="Nhập tên sản phẩm..." style="flex: 1; min-width: 0; height: 44px; padding: 0 14px; border-radius: 14px; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 14px; outline: none;">
-        <button type="button" id="eh-search-btn" class="eh-search-btn" aria-label="Tìm kiếm sản phẩm" style="flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; border: none; cursor: pointer;">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.5" fill="none" stroke="#FFFFFF" stroke-width="2"></circle>
-            <line x1="20" y1="20" x2="15.7" y2="15.7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
-          </svg>
-        </button>
-      </div>
-      <div id="eh-search-results" style="display: none; margin-top: 12px;"></div>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 26px; animation: ehRise .6s .26s ease both;">
-      <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">MUA TRÊN SÀN QUEN THUỘC</span>
-      <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
-    </div>
-    <span style="display: block; width: 100%; margin-top: 3px; font-size: 11px; font-style: italic; color: #93A5A0;">Tiện hơn nhưng giá cao hơn do phí sàn</span>
-
-    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 12px; animation: ehRise .6s .3s ease both;">
-      <a href="https://vn.shp.ee/BdG9kXkb" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.22); border-color: rgba(238,77,45,.4);">
-        <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #EE4D2D; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: -.02em;">S</span>
-        <span style="flex: 1; min-width: 0;">
-          <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">Shopee</span>
-          <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">Gian hàng chính hãng EasyHome</span>
-        </span>
-        <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
-      </a>
-      <a href="https://www.tiktok.com/@easy_home_vn" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.22); border-color: rgba(35,54,47,.32);">
-        <span style="display: block; width: 34px; height: 34px; border-radius: 10px; overflow: hidden; background: #000000;"><img src="assets/tiktok-logo.png" alt="" style="display: block; width: 40px; height: 37px; object-fit: cover; transform: scale(1.28)"></span>
-        <span style="flex: 1; min-width: 0;">
-          <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">TikTok Shop</span>
-          <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">Săn deal kèm livestream</span>
-        </span>
-        <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
-      </a>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 28px;">
-      <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">XEM REVIEW TRƯỚC KHI MUA</span>
-      <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
-    </div>
-
-    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 12px;">
-      <a href="https://www.youtube.com/@EasyHomeVn?utm_source=bio&amp;utm_medium=link&amp;utm_campaign=youtube_easyhome" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; color: #232F2A;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(255,0,0,.34); background: #FF0000; border-color: #FF0000; color: #FFFFFF;" style-active="background: #FF0000; border-color: #FF0000; color: #FFFFFF;">
-        <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(35,54,47,.08); color: #FF0000; font-size: 13px; padding-left: 2px;">▶</span>
-        <span style="flex: 1; min-width: 0;">
-          <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">YouTube Easy Home</span>
-          <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Tự tay mở hộp &amp; trải nghiệm</span>
-        </span>
-        <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
-      </a>
-      <a href="https://www.youtube.com/@Checkertech?utm_source=bio&amp;utm_medium=link&amp;utm_campaign=youtube_checkertech" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; color: #232F2A;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(255,0,0,.34); background: #FF0000; border-color: #FF0000; color: #FFFFFF;" style-active="background: #FF0000; border-color: #FF0000; color: #FFFFFF;">
-        <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(35,54,47,.08); overflow: hidden;">
-          <img src="assets/checkertech.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover;">
-        </span>
-        <span style="flex: 1; min-width: 0;">
-          <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">YouTube Checker Tech</span>
-          <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Việt hoá review công nghệ quốc tế</span>
-        </span>
-        <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
-      </a>
-      <a href="https://blog.easyhome.vn/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; color: #232F2A;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(18,179,168,.34); background: #12B3A8; border-color: #12B3A8; color: #FFFFFF;" style-active="background: #12B3A8; border-color: #12B3A8; color: #FFFFFF;">
-        <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(35,54,47,.08); color: #12B3A8; font-size: 16px;">📝</span>
-        <span style="flex: 1; min-width: 0;">
-          <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">Blog Đánh Giá Công Nghệ</span>
-          <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Bài viết chuyên sâu, so sánh &amp; kinh nghiệm chọn mua</span>
-        </span>
-        <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
-      </a>
-    </div>
-
-    <sc-if value="{{ showContact }}" hint-placeholder-val="{{ true }}">
-      <div style="width: 100%;">
-        <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 28px;">
-          <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">LIÊN HỆ &amp; TƯ VẤN</span>
-          <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
-          <a href="https://www.facebook.com/share/1DzwJccLXx/" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid rgba(35,54,47,.09); transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; color: #232F2A;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(24,119,242,.34); background: #1877F2; border-color: #1877F2; color: #FFFFFF;" style-active="background: #1877F2; border-color: #1877F2; color: #FFFFFF;">
-            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(35,54,47,.08); color: #1877F2; font-size: 16px; font-weight: 800; font-family: Georgia, serif;">f</span>
-            <span style="flex: 1; min-width: 0;">
-              <span style="display: block; font-size: 15px; font-weight: 600; color: inherit;">Facebook</span>
-              <span style="display: block; margin-top: 1px; font-size: 12px; color: inherit; opacity: .6;">Ảnh thật, khách thật, cập nhật hàng mới</span>
-            </span>
-            <span style="color: inherit; opacity: .42; font-size: 17px; font-weight: 600;">›</span>
-          </a>
-          <a href="https://zalo.me/0702516668" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid rgba(35,54,47,.09); transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.2);">
-            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #0068FF; color: #fff; font-size: 12px; font-weight: 800;">Z</span>
-            <span style="flex: 1; min-width: 0;">
-              <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">Chat Zalo</span>
-              <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">Tư vấn chọn mẫu, báo giá nhanh</span>
-            </span>
-            <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
-          </a>
-          <div style="display: flex; align-items: stretch; gap: 8px; width: 100%;">
-            <a href="tel:+84702516668" style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 13px; padding: 15px 18px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid rgba(35,54,47,.09); transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.2);">
-              <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #2F7F63; color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0;">☎</span>
-              <span style="flex: 1; min-width: 0;">
-                <span style="display: block; font-size: 15px; font-weight: 600; color: #232F2A;">Hotline</span>
-                <span style="display: block; margin-top: 1px; font-size: 12px; color: #8A938D;">8:00 – 21:00, cả cuối tuần</span>
-              </span>
-              <span style="color: #B6BDB8; font-size: 17px; font-weight: 600;">›</span>
-            </a>
-            <button type="button" id="eh-copy-hotline" style="flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 0 12px; border-radius: 14px; border: 1px solid rgba(18,179,168,.35); background: rgba(18,179,168,.08); color: #12B3A8; font-family: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: background-color .16s ease, transform .16s ease;" style-hover="background: rgba(18,179,168,.16); transform: translateY(-2px);" style-active="background: rgba(18,179,168,.22); transform: translateY(0);">
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                <rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="#12B3A8" stroke-width="2"></rect>
-                <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="#12B3A8" stroke-width="2"></path>
-              </svg>
-              <span class="eh-copy-label">Copy số</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </sc-if>
-
-    <div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 28px;">
-      <span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #8A938D; white-space: nowrap;">GHÉ CỬA HÀNG</span>
-      <span style="flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,147,141,.34), rgba(138,147,141,0));"></span>
-    </div>
-
-    <a href="https://maps.app.goo.gl/uxioLdmgJzt9cUni8" target="_blank" rel="noopener noreferrer" style="display: block; width: 100%; margin-top: 12px; border-radius: 18px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(35,54,47,.24);">
-      <span style="position: relative; display: block; height: 152px; background:
-          repeating-linear-gradient(90deg, #E3ECEA 0 1px, rgba(0,0,0,0) 1px 34px),
-          repeating-linear-gradient(0deg, #E3ECEA 0 1px, rgba(0,0,0,0) 1px 34px),
-          linear-gradient(112deg, rgba(0,0,0,0) 0 46%, #E3ECEA 46% 47.4%, rgba(0,0,0,0) 47.4%),
-          linear-gradient(18deg, rgba(0,0,0,0) 0 63%, #E3ECEA 63% 64.2%, rgba(0,0,0,0) 64.2%),
-          #F0F5F4;">
-        <span style="position: absolute; top: 50%; left: 50%; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; border: 2px solid rgba(47,127,99,.42); animation: ehPing 2.4s ease-out infinite;"></span>
-        <span style="position: absolute; top: 50%; left: 50%; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; border: 2px solid rgba(47,127,99,.42); animation: ehPing 2.4s ease-out 1s infinite;"></span>
-        <svg viewBox="0 0 24 24" width="34" height="34" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -62%); filter: drop-shadow(0 4px 6px rgba(35,54,47,.28));" aria-hidden="true">
-          <path d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 5.4 7.5 12.5 7.5 12.5s7.5-7.1 7.5-12.5A7.5 7.5 0 0 0 12 2z" fill="#2F7F63"></path>
-          <circle cx="12" cy="9.4" r="2.9" fill="#FFFFFF"></circle>
-        </svg>
-      </span>
-      <span style="display: block; padding: 15px 18px 17px;">
-        <span style="display: block; font-size: 15px; font-weight: 700; color: #232F2A;">EasyHome Store</span>
-        <span style="display: block; margin-top: 3px; font-size: 12px; font-weight: 600; color: #2F7F63;">⭐ 5.0 · Cửa hàng đã xác minh trên Google</span>
-        <span style="display: block; margin-top: 4px; font-size: 12px; line-height: 1.5; color: #8A938D;">Bấm để xem địa chỉ, giờ mở cửa &amp; đánh giá trên Google Maps</span>
-        <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 14px; border-radius: 999px; background: #EEF3F0; color: #2F7F63; font-size: 12.5px; font-weight: 700;">Chỉ đường <span style="font-size: 15px;">›</span></span>
-      </span>
-    </a>
-
-    <div style="display: flex; align-items: center; gap: 14px; max-width: 100%; box-sizing: border-box; margin-top: 30px; padding: 8px 16px 8px 8px; border-radius: 24px; background: rgba(255,255,255,.6); border: 1px solid rgba(35,54,47,.07);">
-      <img src="assets/mascot_bike_transparent.gif" alt="" style="display: block; flex-shrink: 0; width: 180px; height: 180px; object-fit: contain;">
-      <span style="display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 0; font-size: 12px; font-weight: 500; color: #6E7873; line-height: 1.45;">
-        <span>Giao nhanh toàn quốc</span>
-        <span>Đổi trả 7 ngày</span>
-      </span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 6px; margin-top: 22px; font-size: 11.5px; color: #9BA39E;">
-      <img src="assets/eh-roof.png" alt="" style="display: block; width: 20px; height: auto; opacity: .6;">
-      <span>© 2026 EasyHome. Kênh bán chính thức.</span>
-    </div>
-  </div>
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:1120},&quot;primaryHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://easyhome.requa.vn&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;badgeText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;-30%&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA chính&quot;},&quot;showContact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nhóm nút&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      primaryHref: this.props.primaryHref ?? "https://easyhome.requa.vn",
-      badgeText: this.props.badgeText ?? "-30%",
-      showContact: this.props.showContact ?? true,
+  // Mascot: PNG tĩnh → GIF khi tải xong (hero: sau window load; xe đạp: khi sắp cuộn tới). Reduced-motion: chỉ PNG.
+  if (!reduced) {
+    const swapGif = img => {
+      if (img.dataset.done) return; img.dataset.done = '1';
+      const g = new Image();
+      g.onload = () => { img.classList.add('swap'); setTimeout(() => { img.src = g.src; img.classList.remove('swap'); }, 200); };
+      g.src = img.dataset.gif;
     };
+    const heroGif = () => $$('.eh-anim[data-when="load"]').forEach(swapGif);
+    document.readyState === 'complete' ? heroGif() : addEventListener('load', heroGif, { once: true });
+    const lazy = $$('.eh-anim[data-when="view"]');
+    if ('IntersectionObserver' in window) {
+      const gio = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting && e.target.offsetParent !== null) { gio.unobserve(e.target); swapGif(e.target); }
+      }), { rootMargin: '200px' });
+      lazy.forEach(i => gio.observe(i));
+    } else lazy.forEach(swapGif);
   }
-}
-</script>
-<script>
-(function () {
-  var HOTLINE_NUMBER = "0702516668";
-  function fallbackCopy(text) {
-    try {
-      var ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      return true;
-    } catch (e) {
-      return false;
-    }
+
+  // Đếm số
+  const count = (el, dur, delay, fmt) => {
+    if (!el) return;
+    if (reduced) { el.textContent = fmt(1); return; }
+    el.textContent = fmt(0);
+    const t0 = performance.now() + delay;
+    const step = now => {
+      const k = Math.min(1, Math.max(0, (now - t0) / dur));
+      el.textContent = fmt(1 - Math.pow(1 - k, 3));
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  count($('#eh-pct'), 1300, 500, e => '-' + Math.round(30 * e) + '%');
+  const star = $('#eh-star');
+  if (star) {
+    star.textContent = '0.0';
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { io.disconnect(); count(star, 1100, 0, v => (5 * v).toFixed(1)); }
+    }, { threshold: .6 });
+    io.observe(star);
   }
-  function showCopied(label) {
-    if (!label) return;
-    if (label.__ehCopyTimer) clearTimeout(label.__ehCopyTimer);
-    var original = label.getAttribute("data-original") || label.textContent;
-    label.setAttribute("data-original", original);
-    label.textContent = "Đã copy ✓";
-    label.__ehCopyTimer = setTimeout(function () {
-      label.textContent = original;
-      label.__ehCopyTimer = null;
-    }, 2000);
-  }
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest ? e.target.closest("#eh-copy-hotline") : null;
-    if (!btn) return;
-    e.preventDefault();
-    var label = btn.querySelector(".eh-copy-label");
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(HOTLINE_NUMBER).then(function () {
-          showCopied(label);
-        }).catch(function () {
-          if (fallbackCopy(HOTLINE_NUMBER)) showCopied(label);
-        });
-      } else {
-        if (fallbackCopy(HOTLINE_NUMBER)) showCopied(label);
-      }
-    } catch (err) {}
+
+  // Cột trái sticky: bỏ nếu cao hơn màn hình
+  const colL = $('.col-l');
+  const checkSticky = () => colL.classList.toggle('nosticky', desk() && colL.scrollHeight + 108 > innerHeight);
+  checkSticky();
+  addEventListener('resize', checkSticky);
+  document.fonts && document.fonts.ready.then(checkSticky);
+
+  // Accordion
+  const acc = $('.acc'), accBtn = $('.acc__btn');
+  if (desk()) { acc.classList.add('open'); accBtn.setAttribute('aria-expanded', 'true'); setTimeout(checkSticky, 450); }
+  accBtn.addEventListener('click', e => {
+    const open = acc.classList.toggle('open');
+    e.currentTarget.setAttribute('aria-expanded', open);
+    setTimeout(checkSticky, 450);
   });
-})();
-</script>
-<script>
-(function () {
-  // /api/search is a same-origin Cloudflare Pages Function (see functions/api/search.js).
-  // It exists because the real storefront scopes search by an "x-tenant-id" header that
-  // easyhome.requa.vn's CORS policy does not allow from a foreign origin like this page --
-  // confirmed via a real cross-origin fetch() test, not assumed. The Function also does the
-  // diacritics-insensitive substring matching server-side (the upstream API only supports
-  // exact whole-token matches), so this page just renders whatever it returns.
-  var SEARCH_ENDPOINT = "/api/search";
-  var SITE_BASE = "https://easyhome.requa.vn/";
-  var MAX_RESULTS = 6;
 
-  var debounceTimer = null;
-  var searchSeq = 0;
+  // Copy số
+  const toast = $('.toast'), copyBtn = $('.copy');
+  let ct;
+  const doCopy = () => {
+    const fallback = () => { const t = document.createElement('textarea'); t.value = copyNum; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (_) {} t.remove(); };
+    navigator.clipboard ? navigator.clipboard.writeText(copyNum).catch(fallback) : fallback();
+    copyBtn.classList.add('done'); toast.classList.add('show');
+    clearTimeout(ct);
+    ct = setTimeout(() => { copyBtn.classList.remove('done'); toast.classList.remove('show'); }, 1800);
+  };
+  copyBtn.addEventListener('click', doCopy);
+  $('.top__hot').addEventListener('click', doCopy);
+  // Laptop không gọi được → bấm số = copy
+  $('.hotline > a').addEventListener('click', e => { if (desk() && fine()) { e.preventDefault(); doCopy(); } });
 
-  function escapeHtml(str) {
-    return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  // Thanh dính đáy (mobile): hiện khi đã cuộn qua thẻ -30%
+  const bar = $('.bar'), gold = $('.gold');
+  new IntersectionObserver(([e]) => {
+    bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0);
+  }).observe(gold);
+
+  // Thanh dính trên (≥768px): hiện khi cuộn quá 200px
+  const top = $('.top');
+  const onScroll = () => { const s = scrollY > 200; if (s !== top.classList.contains('show')) top.classList.toggle('show', s); };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Thẻ vàng: nghiêng 3D theo chuột
+  if (fine() && !reduced) {
+    gold.addEventListener('pointermove', e => {
+      const r = gold.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      gold.classList.add('tilting');
+      gold.style.setProperty('--ry', ((x - .5) * 12).toFixed(2) + 'deg');
+      gold.style.setProperty('--rx', ((.5 - y) * 12).toFixed(2) + 'deg');
+      gold.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      gold.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    });
+    gold.addEventListener('pointerleave', () => {
+      gold.classList.remove('tilting');
+      gold.style.setProperty('--rx', '0deg'); gold.style.setProperty('--ry', '0deg');
     });
   }
 
-  function setResultsHtml(html) {
-    var resultsBox = document.getElementById("eh-search-results");
-    if (!resultsBox) return;
-    resultsBox.style.display = "block";
-    resultsBox.innerHTML = html;
-  }
+  // Chuẩn hoá phản hồi của /api/search → [{name, url, img, out}]. Không có trường giá nào.
+  const mapItems = d => ((d && d.data && d.data.items) || (d && d.items) || (Array.isArray(d) ? d : []))
+    .map(p => ({ name: p.product_name || p.name, url: p.link || p.url, img: p.thumbnail_url || p.img || '', out: p.in_stock === false }))
+    .filter(p => p.name);
+  const card = p => `<a class="eh-prod" href="${esc(p.url || CONFIG.WEB_URL)}">${p.img
+    ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" width="300" height="300" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;eh-prod__ph&quot;></span>'">`
+    : '<span class="eh-prod__ph" aria-hidden="true"></span>'}<span class="eh-prod__name">${esc(p.name)}</span>${p.out ? '<span class="eh-prod__out">Hết hàng</span>' : ''}</a>`;
 
-  function hideResults() {
-    var resultsBox = document.getElementById("eh-search-results");
-    if (!resultsBox) return;
-    resultsBox.style.display = "none";
-    resultsBox.innerHTML = "";
-  }
-
-  function renderLoading() {
-    setResultsHtml('<div style="padding: 16px; text-align: center; font-size: 13px; color: #8A938D;">Đang tìm...</div>');
-  }
-
-  function renderError() {
-    setResultsHtml(
-      '<div style="padding: 14px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); font-size: 13px; line-height: 1.6; color: #6B7C8C;">' +
-      'Không tải được dữ liệu sản phẩm. Bạn có thể <a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="color: #2F7F63; font-weight: 700;">tìm trực tiếp trên web →</a>' +
-      '</div>'
-    );
-  }
-
-  function renderEmpty() {
-    setResultsHtml(
-      '<div style="padding: 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); text-align: center;">' +
-        '<p style="margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: #6B7C8C;">Không tìm thấy sản phẩm nào. Thử từ khoá khác hoặc</p>' +
-        '<a href="' + SITE_BASE + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 12px 28px; border-radius: 14px; background: linear-gradient(135deg, #1AC9BD 0%, #0E8F86 100%); color: #FFFFFF; font-size: 14px; font-weight: 800; text-decoration: none; box-shadow: 0 4px 12px rgba(18,179,168,.3);">Vào Gian hàng <span style="font-size: 16px;">→</span></a>' +
-      '</div>'
-    );
-  }
-
-  function productCardHtml(item) {
-    var name = escapeHtml(item.product_name || "");
-    var img = escapeHtml(item.thumbnail_url || "");
-    var link = escapeHtml(item.link || SITE_BASE);
-    var category = escapeHtml(item.category_name || "");
-    var warranty = (item.warranty_type === "M" && item.warranty_duration) ? "Bảo hành " + escapeHtml(String(item.warranty_duration)) + " tháng" : "";
-    var meta = [category, warranty].filter(Boolean).join(" · ");
-    var inStock = item.in_stock !== false;
-    var opacity = inStock ? "1" : ".5";
-    var stockNote = inStock ? "" : '<span style="display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #C0392B;">Tạm hết hàng</span>';
-
-    return (
-      '<a href="' + link + '" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(35,54,47,.09); box-shadow: 0 2px 6px rgba(35,54,47,.05); text-decoration: none; opacity: ' + opacity + '; transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(35,54,47,.22);">' +
-        '<img src="' + img + '" alt="" loading="lazy" width="56" height="56" style="flex-shrink: 0; width: 56px; height: 56px; border-radius: 10px; object-fit: cover; background: #F0F5F4;">' +
-        '<span style="flex: 1; min-width: 0;">' +
-          '<span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13.5px; font-weight: 600; line-height: 1.4; color: #232F2A;">' + name + '</span>' +
-          '<span style="display: block; margin-top: 3px; font-size: 11.5px; color: #8A938D;">' + meta + '</span>' +
-          stockNote +
-          '<span style="display: block; margin-top: 4px; font-size: 12px; font-weight: 700; color: #2F7F63;">Xem giá tốt nhất →</span>' +
-        '</span>' +
-      '</a>'
-    );
-  }
-
-  function renderResults(items, total, keyword) {
-    if (!items.length) {
-      renderEmpty();
-      return;
-    }
-    var kw = escapeHtml(keyword);
-    var html = '<div style="display: flex; flex-direction: column; gap: 8px;">' + items.slice(0, MAX_RESULTS).map(productCardHtml).join("") + '</div>';
-
-    if (total > items.length) {
-      var searchUrl = SITE_BASE + "tim-kiem?q=" + encodeURIComponent(keyword);
-      html += '<a href="' + escapeHtml(searchUrl) + '" target="_blank" rel="noopener" style="display: block; margin-top: 10px; text-align: center; padding: 10px 18px; border-radius: 12px; background: rgba(18,179,168,.10); border: 1px solid rgba(18,179,168,.3); color: #0E8F86; font-size: 12.5px; font-weight: 600; text-decoration: none;">Xem tất cả ' + total + ' kết quả →</a>';
-    }
-
-    html +=
-      '<div style="margin-top: 12px;">' +
-        '<button type="button" class="eh-search-shopee" data-kw="' + kw + '" style="width: 100%; height: 44px; border-radius: 12px; border: 1px solid rgba(238,77,45,.35); background: rgba(238,77,45,.08); color: #EE4D2D; font-family: \'Be Vietnam Pro\', \'Segoe UI\', system-ui, sans-serif; font-size: 12.5px; font-weight: 700; cursor: pointer;">Tìm trên Shopee</button>' +
-      '</div>' +
-      '<span style="display: block; margin-top: 6px; font-size: 11px; font-style: italic; color: #93A5A0; text-align: center;">Giá trên sàn thường cao hơn do phí sàn</span>';
-
-    setResultsHtml(html);
-  }
-
-  function runSearch(rawKeyword) {
-    var keyword = (rawKeyword || "").trim();
-    if (keyword.length < 2) {
-      hideResults();
-      return;
-    }
-    var mySeq = ++searchSeq;
-    renderLoading();
-
-    fetch(SEARCH_ENDPOINT + "?q=" + encodeURIComponent(keyword))
-      .then(function (res) {
-        if (!res.ok) throw new Error("bad status");
-        return res.json();
+  // Tìm kiếm realtime: gõ → (debounce 300ms) → /api/search?q=… ; Enter / “Xem tất cả” → tìm trên web
+  const input = $('#eh-q'), empty = $('.search__empty');
+  const hot = $('#eh-hot-products'), hotLbl = $('.find__lbl'), res = $('#eh-results');
+  const webSearch = q => CONFIG.SEARCH_URL + encodeURIComponent(q);
+  const showHot = on => { hot.hidden = !on || !hot.querySelector('.eh-prod'); hotLbl.hidden = hot.hidden; res.hidden = on; };
+  let sTimer, sAbort, sSeq = 0;
+  const runSearch = q => {
+    const seq = ++sSeq;
+    if (sAbort) sAbort.abort();
+    const ctl = sAbort = new AbortController(), to = setTimeout(() => ctl.abort(), 4000);
+    empty.hidden = true; res.hidden = false; hot.hidden = true; hotLbl.hidden = true;
+    res.setAttribute('aria-busy', 'true');
+    res.innerHTML = '<p class="search__msg">Đang tìm…</p>';
+    fetch(CONFIG.SEARCH_API + '?q=' + encodeURIComponent(q), { signal: ctl.signal })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        if (seq !== sSeq) return;
+        if (!d || d.success === false) throw 0;
+        const items = mapItems(d), total = (d.data && d.data.total) || items.length;
+        res.setAttribute('aria-busy', 'false');
+        if (!items.length) { res.hidden = true; empty.hidden = false; return; }
+        res.innerHTML = '<div class="hot">' + items.map(card).join('') + '</div>'
+          + (total > items.length ? `<a class="search__more" href="${esc(webSearch(q))}">Xem tất cả ${total} kết quả →</a>` : '');
       })
-      .then(function (json) {
-        if (mySeq !== searchSeq) return;
-        if (!json || json.success !== true) throw new Error("bad response");
-        var items = (json.data && json.data.items) || [];
-        var total = (json.data && json.data.total) || 0;
-        renderResults(items, total, keyword);
+      .catch(() => {
+        if (seq !== sSeq) return;
+        res.setAttribute('aria-busy', 'false');
+        res.innerHTML = `<p class="search__msg">Chưa tải được gợi ý. <a href="${esc(webSearch(q))}">Tìm “${esc(q)}” trên web ›</a></p>`;
       })
-      .catch(function () {
-        if (mySeq !== searchSeq) return;
-        renderError();
-      });
+      .finally(() => clearTimeout(to));
+  };
+  input.addEventListener('input', () => {
+    clearTimeout(sTimer);
+    const q = input.value.trim();
+    if (q.length < 2) { sSeq++; if (sAbort) sAbort.abort(); empty.hidden = true; showHot(true); return; }   // Function chỉ nhận từ khoá ≥ 2 ký tự
+    sTimer = setTimeout(() => runSearch(q), 300);
+  });
+  $('.search').addEventListener('submit', e => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (q) location.href = webSearch(q);
+  });
+
+  // Gợi ý cho bạn: API → nếu lỗi/quá 4s → FALLBACK_PRODUCTS
+  const renderHot = items => {
+    if (!Array.isArray(items) || !items.length) return false;
+    hot.innerHTML = items.slice(0, 8).map(card).join('');
+    hot.dataset.ready = '1';
+    if (input.value.trim().length < 2) showHot(true);
+    return true;
+  };
+  window.ehRenderHot = renderHot;
+  const hotFallback = () => {
+    if (hot.dataset.ready) return;
+    if (hot.querySelector('.eh-prod')) { hot.dataset.ready = '1'; return; }
+    if (!renderHot(CONFIG.FALLBACK_PRODUCTS)) { hot.hidden = true; $('.find__lbl').hidden = true; }
+  };
+  // Hạn chót đúng 4s kể từ lúc bắt đầu tải; fetch bị huỷ cùng lúc
+  const ac = new AbortController();
+  const hotTimer = setTimeout(() => { ac.abort(); hotFallback(); }, 4000);
+  if (CONFIG.HOT_API_URL) {
+    fetch(CONFIG.HOT_API_URL, { signal: ac.signal })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => { if (ac.signal.aborted) return; clearTimeout(hotTimer); if (!d || d.success === false || !renderHot(mapItems(d))) hotFallback(); })
+      .catch(() => { clearTimeout(hotTimer); hotFallback(); });
   }
 
-  document.addEventListener("click", function (e) {
-    var searchBtn = e.target.closest ? e.target.closest("#eh-search-btn") : null;
-    if (searchBtn) {
-      e.preventDefault();
-      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-      var inputEl = document.getElementById("eh-search-input");
-      runSearch(inputEl ? inputEl.value : "");
-      return;
-    }
-    var shopeeBtn = e.target.closest ? e.target.closest(".eh-search-shopee") : null;
-    if (shopeeBtn) {
-      var kw = shopeeBtn.getAttribute("data-kw") || "";
-      window.open("https://shopee.vn/search?keyword=" + encodeURIComponent(kw) + "&shop=19677114", "_blank", "noopener,noreferrer");
-      return;
-    }
-  });
-
-  document.addEventListener("keydown", function (e) {
-    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
-    if (!inputEl) return;
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-      runSearch(inputEl.value);
-    }
-  });
-
-  document.addEventListener("input", function (e) {
-    var inputEl = e.target.closest ? e.target.closest("#eh-search-input") : null;
-    if (!inputEl) return;
-    if (debounceTimer) clearTimeout(debounceTimer);
-    var val = inputEl.value;
-    debounceTimer = setTimeout(function () {
-      runSearch(val);
-    }, 300);
-  });
-})();
+  // Khách nói gì
+  const rl = $('#eh-reviews');
+  rl.innerHTML = (CONFIG.REVIEWS || []).slice(0, 3).map(r => {
+    const n = Math.max(0, Math.min(5, Math.round(r.stars ?? 5)));
+    return `<article class="rvw"><span class="rvw__st" role="img" aria-label="${n} trên 5 sao">${'★'.repeat(n)}<i>${'★'.repeat(5 - n)}</i></span><p>${esc(r.text)}</p><div class="rvw__by"><b>${esc(r.name)}</b><span>${esc(r.date)}</span></div></article>`;
+  }).join('');
+  if (!rl.children.length) $('.rev').hidden = true;
+});
 </script>
+
+<style>
+:root{--bg:#0A1512;--card:#12211C;--line:rgba(95,169,140,.18);--sage:#5FA98C;--teal:#12B3A8;--mint:#5FE3C8;--ink:#EAF4F0;--mute:#8FB3A6;--dim:#6F9185;--spring:cubic-bezier(.2,1.4,.4,1);--out:cubic-bezier(.2,.8,.2,1);--bar-h:80px}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{overflow-x:hidden}
+a{color:var(--mint)}a:hover{color:var(--ink)}
+img{display:block;max-width:100%}
+.eh-anim{transition:opacity .2s ease}
+.eh-anim.swap{opacity:0}
+h1,h2,p{margin:0}
+[hidden]{display:none!important}
+:where(a,button,input,[tabindex]):focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes shadow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.72);opacity:.45}}
+@keyframes breath{0%,100%{opacity:.45;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
+@keyframes sheen{0%{transform:translateX(-150%) skewX(-20deg)}35%,100%{transform:translateX(360%) skewX(-20deg)}}
+@keyframes goldSheen{0%{transform:translateX(-180%) rotate(22deg)}45%,100%{transform:translateX(360%) rotate(22deg)}}
+@keyframes twinkle{0%,100%{opacity:0;transform:rotate(45deg) scale(.2)}50%{opacity:1;transform:rotate(45deg) scale(1)}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes ping{0%{transform:scale(1);opacity:.75}80%,100%{transform:scale(2.8);opacity:0}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@keyframes d1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,80px)}}
+@keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,-50px)}}
+@keyframes d3{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-70px)}}
+
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg i{position:absolute;border-radius:50%}
+.bg i:nth-child(1){top:-120px;left:-100px;width:380px;height:380px;background:radial-gradient(closest-side,rgba(18,179,168,.2),transparent);animation:d1 40s ease-in-out infinite}
+.bg i:nth-child(2){top:38%;right:-160px;width:420px;height:420px;background:radial-gradient(closest-side,rgba(95,169,140,.13),transparent);animation:d2 48s ease-in-out infinite}
+.bg i:nth-child(3){bottom:-140px;left:15%;width:360px;height:360px;background:radial-gradient(closest-side,rgba(26,201,189,.11),transparent);animation:d3 54s ease-in-out infinite}
+.bg i:nth-child(n+4),.grain,.bike-l{display:none}
+
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:20px 16px 28px;display:flex;flex-direction:column;gap:14px}
+.col-l,.col-r{display:flex;flex-direction:column;gap:14px;min-width:0}
+.rv{animation:up .6s var(--out) both;animation-delay:calc(var(--i,0) * 60ms)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px}
+.lbl{padding:10px 4px 2px}
+.lbl h2{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+.note{margin-top:3px;font-size:13px;color:var(--mute)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 128px;align-items:end;gap:6px}
+.hero__txt{display:flex;flex-direction:column;gap:14px;padding-bottom:22px}
+.chip{align-self:flex-start;display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;background:rgba(95,169,140,.12);border:1px solid rgba(95,169,140,.25);color:var(--mute);font-size:12px;font-weight:600}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--teal)}
+.logo{width:100%;max-width:220px;height:auto}
+.slogan{font-size:17px;font-weight:600;line-height:1.35;text-wrap:pretty}
+.mascot{position:relative;height:164px}
+.mascot img{position:absolute;left:0;bottom:10px;width:128px;height:auto;animation:float 3.2s ease-in-out infinite}
+.mascot .sh{position:absolute;left:50%;bottom:2px;width:84px;height:14px;margin-left:-42px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);animation:shadow 3.2s ease-in-out infinite}
+
+/* Mua trực tiếp */
+.buy{position:relative;padding:18px 16px;border-radius:24px;background:linear-gradient(180deg,#152821,#12211C);border-color:rgba(95,169,140,.26);box-shadow:0 22px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(234,244,240,.05)}
+.eyebrow{color:var(--mint);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.buy h1{margin:6px 0 16px;font-size:25px;line-height:1.2;font-weight:800;letter-spacing:-.01em;text-wrap:pretty}
+.buy__row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px;align-items:stretch}
+.gold{position:relative;overflow:hidden;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:14px 12px;border-radius:16px;background:linear-gradient(135deg,#F9E08B 0%,#E3B341 50%,#B8862B 100%);border:1px solid rgba(255,241,184,.5);box-shadow:0 10px 28px rgba(227,179,65,.35),inset 0 1px 0 rgba(255,250,220,.7),inset 0 -1px 0 rgba(110,75,10,.35);transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s var(--out)}
+.gold.tilting{transition:transform .08s linear}
+.gold>*{position:relative;z-index:1}
+.gold__tag{font-size:9.5px;font-weight:800;letter-spacing:.14em;line-height:1.3;text-transform:uppercase;color:#5C4410}
+.gold__num{font-size:clamp(40px,13vw,64px);line-height:1;font-weight:800;letter-spacing:-.045em;color:#3A2A06;white-space:nowrap;font-variant-numeric:tabular-nums;text-shadow:0 -1px 0 rgba(255,250,225,.8),0 1px 1px rgba(58,42,6,.2)}
+.gold__sub{font-size:12.5px;font-weight:600;line-height:1.3;color:#5C4410}
+.gold .gold__sheen{position:absolute;z-index:0;top:-60%;left:0;width:40%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:translateX(-180%) rotate(22deg);animation:goldSheen 3.5s ease-in-out infinite;pointer-events:none}
+.gold .gold__glare{position:absolute;z-index:0;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.6),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.gold .spark{position:absolute;z-index:2;width:6px;height:6px;background:#FFFBEA;box-shadow:0 0 6px #fff;opacity:0;animation:twinkle 2.4s ease-in-out infinite}
+.gold .spark:nth-of-type(1){top:10px;right:12px}
+.gold .spark:nth-of-type(2){top:24px;right:26px;width:4px;height:4px;animation-delay:.8s}
+.gold .spark:nth-of-type(3){bottom:12px;right:12px;width:4px;height:4px;animation-delay:1.6s}
+.perks{display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0}
+.perks div{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.3}
+.perks svg{flex:none}
+.perks p{font-size:13px;line-height:1.45;color:var(--mute);text-wrap:pretty}
+.cta-wrap{position:relative;margin-top:18px}
+.cta-wrap::before{content:"";position:absolute;inset:-12px -4px -20px;border-radius:999px;background:radial-gradient(55% 60% at 50% 55%,rgba(18,179,168,.7),transparent 72%);animation:breath 2.5s ease-in-out infinite;pointer-events:none}
+.cta{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;height:60px;border-radius:999px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);color:#03231F;font-size:18px;font-weight:800;text-decoration:none;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);transition:transform .4s var(--spring)}
+.cta:hover{color:#03231F}
+.cta:active{transform:scale(.96)}
+.cta::before{content:"";position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-150%) skewX(-20deg);animation:sheen 3s ease-in-out infinite;pointer-events:none}
+.cta span{position:relative}
+.cta .arr{font-size:26px;line-height:1;margin-top:-3px;animation:nudge 1.2s ease-in-out infinite}
+.ship{position:relative;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;font-weight:500;line-height:1.35;color:var(--mute);text-align:center;text-wrap:pretty}
+.ship svg{flex:none;color:var(--mint)}
+
+/* Khách nói gì */
+.rev{display:flex;flex-direction:column;gap:10px}
+.rev__hd{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:4px 12px}
+.rev__hd .note b{color:#F5A623}
+.rev__all{font-size:13.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+.rev__list{display:flex;gap:10px;margin:0 -16px;padding:2px 16px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rev__list::-webkit-scrollbar{display:none}
+.rvw{flex:0 0 82%;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.rvw__st{font-size:14px;letter-spacing:1px;color:#F5A623}
+.rvw__st i{font-style:normal;color:rgba(234,244,240,.15)}
+.rvw p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.5;color:#C9DDD5}
+.rvw__by{margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12.5px}
+.rvw__by b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.rvw__by span{flex:none;color:var(--dim)}
+.rev__skel{flex:0 0 82%;height:132px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+
+/* Accordion */
+.acc{overflow:hidden}
+.acc__btn{width:100%;display:flex;align-items:center;gap:10px;padding:16px;border:0;border-radius:20px;background:transparent;color:var(--ink);font:700 15.5px 'Be Vietnam Pro',system-ui,sans-serif;text-align:left;cursor:pointer}
+.acc__btn span:nth-child(2){flex:1}
+.acc__btn svg{transition:transform .35s var(--spring)}
+.acc.open .acc__btn svg{transform:rotate(180deg)}
+.acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--out)}
+.acc.open .acc__body{grid-template-rows:1fr}
+.acc__body>div{overflow:hidden;min-height:0}
+.acc__in{padding:0 16px 18px;display:flex;flex-direction:column;gap:14px;opacity:0;transition:opacity .3s ease}
+.acc.open .acc__in{opacity:1}
+.acc__in p{font-size:14.5px;line-height:1.6;color:#C9DDD5;text-wrap:pretty}
+.acc__in b{color:var(--ink)}
+.chart{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:14px;background:#0D1915;border:1px solid rgba(234,244,240,.05)}
+.chart__row{display:grid;grid-template-columns:62px minmax(0,1fr);align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--mute)}
+.chart__row.web{color:var(--mint);font-weight:700}
+.track{height:26px;border-radius:8px;background:rgba(234,244,240,.04);overflow:hidden}
+.fill{display:flex;height:100%;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--out) .1s}
+.fill i{height:100%}
+.web .fill{width:70%;border-radius:8px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);box-shadow:0 0 16px rgba(18,179,168,.55);align-items:center;justify-content:flex-end;padding-right:8px;color:#03231F;font-size:12px;font-weight:800;transition-delay:.3s}
+.web .track{overflow:visible}
+.acc.open .fill{transform:scaleX(1)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;padding-left:72px;font-size:12px;color:var(--mute)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:8px;height:8px;border-radius:2px}
+.chart__note{margin-top:-4px;font-size:12px!important;color:var(--dim)!important}
+
+/* Cam kết */
+.promise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pk{display:flex;align-items:center;gap:9px;min-height:56px;padding:10px 12px;border-radius:12px;background:rgba(var(--c),.18);border:1px solid rgba(var(--c),.35);font-size:13px;font-weight:600;line-height:1.3;color:var(--ink);text-wrap:pretty}
+.pk svg{flex:none;width:20px;height:20px;color:var(--ic)}
+
+/* Tìm kiếm */
+.find{display:flex;flex-direction:column;gap:12px;padding:16px}
+.find h2{font-size:17px;font-weight:800}
+.search{position:relative}
+.search::before{content:"";position:absolute;inset:-1px;border-radius:18px;box-shadow:0 0 0 3px rgba(18,179,168,.25),0 0 22px rgba(18,179,168,.45);animation:pulse 2.6s ease-in-out infinite;pointer-events:none}
+.search svg{position:absolute;z-index:2;left:16px;top:18px;pointer-events:none}
+.search input{position:relative;width:100%;height:58px;padding:0 16px 0 50px;border-radius:18px;border:1.5px solid var(--teal);background:#0C1814;color:var(--ink);font:500 16px 'Be Vietnam Pro',system-ui,sans-serif;outline:none;-webkit-appearance:none;appearance:none}
+.search input:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.search input::placeholder{color:var(--dim)}
+.find__lbl{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+/* #eh-hot-products — mỗi thẻ: a.eh-prod > img (hoặc span.eh-prod__ph nếu không có ảnh) + span.eh-prod__name. Dùng window.ehRenderHot([{name,url,img}]). */
+.hot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.eh-prod{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:14px;background:#0D1915;border:1px solid rgba(234,244,240,.06);color:var(--ink);text-decoration:none;overflow:hidden}
+.eh-prod:hover{color:var(--ink)}
+.eh-prod img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#fff}
+.eh-prod__name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding:0 2px 2px;font-size:13.5px;font-weight:600;line-height:1.35}
+.eh-prod__ph{display:block;width:100%;aspect-ratio:1/1;border-radius:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235FE3C8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3Cpath d='m7.5 4.27 9 5.15'/%3E%3C/svg%3E") center/34% no-repeat,linear-gradient(135deg,rgba(26,201,189,.22),rgba(14,143,134,.08));border:1px solid rgba(95,227,200,.12)}
+.eh-skel{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:14px;background:#0D1915;border:1px solid rgba(234,244,240,.05)}
+.eh-skel i{position:relative;overflow:hidden;display:block;border-radius:6px;background:#15261F}
+.eh-skel i:nth-child(1){aspect-ratio:1/1;border-radius:10px}
+.eh-skel i:nth-child(2){height:11px;width:90%}
+.eh-skel i:nth-child(3){height:11px;width:55%;margin-bottom:2px}
+.eh-skel i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(95,169,140,.12),transparent);transform:translateX(-100%);animation:shimmer 1.4s ease-in-out infinite}
+.search__empty{font-size:14px;line-height:1.5;color:#C9DDD5}
+.eh-prod__out{align-self:flex-start;margin:0 2px 2px;padding:2px 8px;border-radius:999px;background:rgba(234,244,240,.08);color:var(--mute);font-size:11.5px;font-weight:600}
+#eh-results{display:flex;flex-direction:column;gap:12px}
+.search__msg{font-size:14px;line-height:1.5;color:#C9DDD5}
+.search__more{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:14px;border:1px solid rgba(95,227,200,.4);background:rgba(18,179,168,.12);color:var(--mint);font-size:14.5px;font-weight:700;text-decoration:none}
+.search__more:hover{color:var(--ink);border-color:rgba(18,179,168,.7)}
+
+/* Thẻ kênh */
+.list{display:flex;flex-direction:column;gap:10px}
+.ch{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.ch:hover{color:var(--ink)}
+.ch.flat{background:#0D1915;border-color:rgba(234,244,240,.06)}
+.ch__b{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:800}
+.ch__t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ch__t b{font-size:16px;font-weight:700}
+.ch__t span{font-size:13.5px;color:var(--mute);text-wrap:pretty}
+.ch__go{font-size:24px;color:var(--mute)}
+.yt{width:0;height:0;margin-left:3px;border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.lift{transition:transform .4s var(--spring),border-color .2s}
+.lift:active{transform:scale(.96)}
+.hotline{display:flex;align-items:center;gap:12px}
+.hotline>a{flex:1;min-width:0;display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none;border-radius:12px}
+.hotline .num{font-variant-numeric:tabular-nums;font-weight:800}
+.copy{flex:none;display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(95,227,200,.4);background:rgba(18,179,168,.12);color:var(--mint);font:700 13.5px 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;transition:transform .35s var(--spring)}
+.copy:active{transform:scale(.92)}
+.copy .ok,.copy.done .ic{display:none}
+.copy.done .ok{display:block}
+.copy .t2{display:none}.copy.done .t1{display:none}.copy.done .t2{display:inline}
+
+/* Cửa hàng */
+.store{overflow:hidden}
+.map{position:relative;height:156px;overflow:hidden;background:#0D1A16}
+.map i{position:absolute;display:block}
+.map .grid{inset:0;background-image:linear-gradient(rgba(143,179,166,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(143,179,166,.06) 1px,transparent 1px);background-size:26px 26px}
+.map .river{left:-20%;top:58%;width:140%;height:34px;background:rgba(18,179,168,.1);transform:rotate(-12deg)}
+.map .r1{left:-10%;top:34%;width:120%;height:5px;border-radius:3px;background:rgba(143,179,166,.2);transform:rotate(8deg)}
+.map .r2{left:30%;top:-20%;width:5px;height:140%;border-radius:3px;background:rgba(143,179,166,.18);transform:rotate(18deg)}
+.map .r3{left:72%;top:-20%;width:3px;height:140%;border-radius:2px;background:rgba(143,179,166,.12);transform:rotate(-6deg)}
+.map .p1{left:8%;top:10%;width:62px;height:40px;border-radius:10px;background:rgba(95,169,140,.1)}
+.map .p2{right:8%;bottom:12%;width:78px;height:30px;border-radius:10px;background:rgba(95,169,140,.08)}
+.pin{position:absolute;left:50%;top:50%}
+.pin .ring{left:-18px;top:-18px;width:36px;height:36px;border-radius:50%;background:rgba(18,179,168,.45);opacity:0;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+.pin .dot{left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:#1AC9BD;box-shadow:0 0 0 4px rgba(18,179,168,.25),0 0 18px var(--teal)}
+.pin .head{left:-15px;top:-50px;width:30px;height:30px;animation:float 2.4s ease-in-out infinite}
+.pin .head::before{content:"";position:absolute;inset:0;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:linear-gradient(135deg,#1AC9BD,#0E8F86);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.store__row{display:flex;align-items:center;gap:12px;padding:14px}
+.store__row>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.store__row b.n{font-size:17px;font-weight:800}
+.store__row span{font-size:13.5px;color:var(--mute)}
+#eh-star{color:#F5A623;font-weight:800;font-variant-numeric:tabular-nums}
+.btn-sm{flex:none;display:flex;align-items:center;gap:6px;height:44px;padding:0 18px;border-radius:999px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);color:#03231F;font-size:14.5px;font-weight:800;text-decoration:none;transition:transform .35s var(--spring)}
+.btn-sm:hover{color:#03231F}
+.btn-sm:active{transform:scale(.94)}
+
+footer{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0 4px;text-align:center}
+footer .f1{font-size:14px;font-weight:600}
+footer .f2{font-size:12.5px;color:var(--mute)}
+.f3{font-size:11.5px;color:var(--dim)}
+
+/* Toast + thanh dính đáy (mobile) */
+.toast{position:fixed;left:50%;bottom:calc(var(--bar-h) + 20px + env(safe-area-inset-bottom));z-index:70;margin-left:-60px;width:120px;display:flex;justify-content:center;padding:10px 0;border-radius:999px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(12px) scale(.96);transition:opacity .25s ease,transform .45s var(--spring);pointer-events:none}
+.toast.show{opacity:1;transform:none}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;transform:translateY(115%);transition:transform .45s cubic-bezier(.2,1.2,.4,1)}
+.bar.show{transform:none}
+.bar__in{max-width:480px;margin:0 auto;padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr) minmax(0,1fr);gap:8px;align-items:center;background:rgba(10,21,18,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0}
+.bar a{height:50px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:16px;color:var(--ink);font-size:14.5px;font-weight:700;text-decoration:none;transition:transform .35s var(--spring)}
+.bar a:active{transform:scale(.94)}
+.bar .z{background:rgba(0,104,255,.16);border:1px solid rgba(0,104,255,.55)}
+.bar .c{background:rgba(31,160,90,.16);border:1px solid rgba(31,160,90,.6)}
+.bar .m{position:relative;height:58px;border-radius:18px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);color:#03231F;font-size:16.5px;font-weight:800;overflow:hidden;box-shadow:0 0 22px rgba(18,179,168,.45),inset 0 1px 0 rgba(255,255,255,.35)}
+.bar .m::before{content:"";position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-150%) skewX(-20deg);animation:sheen 3s ease-in-out 1.5s infinite}
+.bar .m span{position:relative}
+.bar .m .arr{font-size:22px;line-height:1;margin-top:-2px;animation:nudge 1.2s ease-in-out infinite}
+@media (max-width:767px){body{padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom))}}
+
+/* Thanh dính trên (≥768px) */
+.top{display:none;position:fixed;top:0;left:0;right:0;z-index:55;height:60px;background:rgba(10,21,18,.72);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--line);transform:translateY(-100%);transition:transform .4s var(--out)}
+.top.show{transform:none}
+.top__in{max-width:1180px;height:100%;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:10px}
+.top__logo{margin-right:auto;border-radius:8px}
+.top__logo img{height:30px;width:auto}
+.top__z{display:flex;align-items:center;height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(0,104,255,.55);background:rgba(0,104,255,.14);color:var(--ink);font-size:14px;font-weight:700;text-decoration:none}
+.top__z:hover{color:var(--ink)}
+.top__hot{display:flex;align-items:center;gap:7px;height:40px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:800 15px 'Be Vietnam Pro',system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer}
+.top__hot svg{color:var(--mint)}
+.top__cta{position:relative;overflow:hidden;display:flex;align-items:center;gap:6px;height:40px;padding:0 18px;border-radius:999px;background:linear-gradient(90deg,#1AC9BD,#0E8F86);color:#03231F;font-size:14px;font-weight:800;text-decoration:none;box-shadow:0 0 18px rgba(18,179,168,.35)}
+.top__cta:hover{color:#03231F}
+
+/* ===== Tablet 768–1023 ===== */
+@media (min-width:768px){
+  :root{--bar-h:0px}
+  .bar{display:none}
+  .top{display:block}
+  .wrap{max-width:680px;padding-top:28px}
+  .hot{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g2,.g3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .g2>.lbl,.g3>.lbl{grid-column:1/-1}
+  .g3>.ch:last-child:nth-child(even){grid-column:1/-1}
+  .rev__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0;overflow:visible}
+  .rvw,.rev__skel{flex:none}
+}
+
+/* ===== Laptop / desktop ≥1024 ===== */
+@media (min-width:1024px){
+  .wrap{max-width:1180px;padding:40px 24px 56px;display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:40px;align-items:start}
+  .col-l{position:sticky;top:84px}
+  .col-l.nosticky{position:static}
+  .col-r{gap:22px}
+  .hero{grid-template-columns:minmax(0,1fr) 160px}
+  .mascot{height:196px}
+  .mascot img{width:160px}
+  .mascot .sh{width:100px;margin-left:-50px}
+  .hot{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g3>.ch:last-child:nth-child(even){grid-column:auto}
+  .g2 .ch,.g3 .ch{position:relative;flex-direction:column;align-items:flex-start;gap:12px;padding:18px}
+  .g2 .ch__go,.g3 .ch__go{position:absolute;top:14px;right:16px}
+  .ch__t{flex:0 0 auto}
+  .hotline>a{flex:0 0 auto;flex-direction:column;align-items:flex-start;gap:12px}
+  .hotline .num{font-size:18px}
+  .hotline .copy{margin-top:auto}
+  .col-r>.find{order:-1}
+  .contact .ch{padding:14px 16px;gap:10px}
+  .contact .ch__b{width:40px;height:40px;border-radius:12px}
+  .contact .ch__go{top:10px}
+  .contact .hotline>a{gap:10px}
+  .contact .hotline .copy{position:absolute;top:12px;right:12px;height:32px;padding:0 11px;font-size:12.5px;margin:0}
+  .rev__all{font-size:14.5px}
+  .lbl{padding:4px 2px 0}
+  .lbl h2{font-size:20px;font-weight:800;letter-spacing:0;text-transform:none;color:var(--ink)}
+  .note{font-size:14px}
+  .find{padding:20px}
+  .find h2{font-size:20px}
+  .acc__btn{font-size:17px}
+  .ch__t span,.acc__in p,.perks p{font-size:15px}
+  .acc__in p{max-width:70ch}
+  .map{height:260px}
+  .bg i:nth-child(1){width:720px;height:720px;top:-220px;left:-220px}
+  .bg i:nth-child(2){width:760px;height:760px;right:-260px}
+  .bg i:nth-child(n+4){display:block}
+  .bg i:nth-child(4){top:30%;left:-240px;width:620px;height:620px;background:radial-gradient(closest-side,rgba(18,179,168,.10),transparent);animation:d3 60s ease-in-out infinite}
+  .bg i:nth-child(5){bottom:-260px;right:10%;width:700px;height:700px;background:radial-gradient(closest-side,rgba(26,201,189,.09),transparent);animation:d1 66s ease-in-out infinite}
+  .grain{display:block;position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .bike-l{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:6px;text-align:center}
+  .bike-l img{width:225px;height:auto}
+  .bike-l .f1{font-size:14px;font-weight:600}
+  .bike-l .f2{font-size:12.5px;color:var(--mute)}
+  footer{display:none}
+  /* Popup của eh-social-ticker.js */
+  body .ehtk{left:24px;bottom:24px}
+}
+
+/* ===== Tương tác chuột ===== */
+@media (hover:hover) and (pointer:fine){
+  .lift{cursor:pointer}
+  .lift:hover{transform:translateY(-3px);border-color:var(--hc,rgba(18,179,168,.6))}
+  .lift:active{transform:scale(.96)}
+  .eh-prod{transition:border-color .2s}
+  .eh-prod:hover{border-color:rgba(18,179,168,.55)}
+  .eh-prod img{transition:transform .45s var(--out)}
+  .eh-prod:hover img{transform:scale(1.05)}
+  .gold:hover .gold__glare{opacity:1}
+  .top__z:hover{background:rgba(0,104,255,.26)}
+  .top__hot:hover{background:rgba(234,244,240,.06)}
+}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top" aria-label="Thanh điều hướng">
+  <div class="top__in">
+    <a class="top__logo" data-link="WEB_URL" href="https://easyhome.requa.vn"><img src="assets/eh-logo.png" alt="EasyHome" width="95" height="30"></a>
+    <a class="top__z" data-link="ZALO_URL" href="#">Chat Zalo</a>
+    <button class="top__hot" type="button" title="Bấm để copy số"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-hotline>070.251.6668</span></button>
+    <a class="top__cta" data-link="WEB_URL" href="https://easyhome.requa.vn">Mua ngay trên web <span aria-hidden="true">›</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="col-l">
+    <header class="hero rv" style="--i:0">
+      <div class="hero__txt">
+        <span class="chip">Kênh bán chính thức</span>
+        <img class="logo" src="assets/eh-logo.png" alt="EasyHome" width="220" height="70" fetchpriority="high">
+        <p class="slogan">Đơn giản hoá ngôi nhà của bạn</p>
+      </div>
+      <div class="mascot" aria-hidden="true">
+        <span class="sh"></span>
+        <img class="eh-anim" src="assets/mascot_wave_poster.png" data-gif="assets/mascot_wave_transparent.gif" data-when="load" alt="" width="128" height="148" decoding="async" fetchpriority="high">
+      </div>
+    </header>
+
+    <section class="card buy rv" style="--i:1">
+      <p class="eyebrow">Chỉ có ở web EasyHome</p>
+      <h1>Mua trực tiếp – Rẻ hơn tới 30%</h1>
+      <div class="buy__row">
+        <div class="gold">
+          <span class="gold__sheen" aria-hidden="true"></span>
+          <span class="gold__glare" aria-hidden="true"></span>
+          <i class="spark" aria-hidden="true"></i><i class="spark" aria-hidden="true"></i><i class="spark" aria-hidden="true"></i>
+          <span class="gold__tag">Giá web rẻ hơn tới</span>
+          <span class="gold__num" id="eh-pct">-30%</span>
+          <span class="gold__sub">so với giá trên sàn</span>
+        </div>
+        <div class="perks">
+          <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5FE3C8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.3 2.3 4.7-5"/></svg>Không qua sàn</div>
+          <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5FE3C8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.3 2.3 4.7-5"/></svg>Không phí trung gian</div>
+          <p>Hàng đi thẳng từ kho tụi tôi tới tay bạn.</p>
+        </div>
+      </div>
+      <div class="cta-wrap">
+        <a class="cta" data-link="WEB_URL" href="https://easyhome.requa.vn"><span>Mua ngay trên web</span><span class="arr">›</span></a>
+      </div>
+      <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span data-cfg="SHIP_NOTE">Giao hàng chỉ 1–4 ngày</span></p>
+    </section>
+
+    <section class="card acc rv" style="--i:2">
+      <button class="acc__btn" aria-expanded="false" aria-controls="acc-why">
+        <span>💡</span><span>Vì sao mua ở web rẻ hơn?</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB3A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="acc__body" id="acc-why"><div><div class="acc__in">
+        <p>Bán qua sàn, mỗi đơn phải gánh <b>phí sàn</b>, <b>phí quảng cáo</b>, <b>chiết khấu</b> và <b>5–10% hoa hồng affiliate</b> cho người review/KOC. Bán trực tiếp trên web, tụi tôi cắt hết các khoản đó và trả lại thẳng vào giá cho bạn.</p>
+        <div class="chart">
+          <div class="chart__row"><span>Giá sàn</span>
+            <div class="track"><div class="fill">
+              <i style="width:70%;background:linear-gradient(90deg,#335E4E,#5FA98C)"></i>
+              <i style="width:8%;background:#F5A623"></i>
+              <i style="width:8%;background:#E53935"></i>
+              <i style="width:6%;background:#7C4DFF"></i>
+              <i style="width:8%;background:#EC4899"></i>
+            </div></div>
+          </div>
+          <div class="chart__row web"><span>Giá web</span>
+            <div class="track"><div class="fill">−30%</div></div>
+          </div>
+          <div class="legend">
+            <span><i style="background:#F5A623"></i>Phí sàn</span>
+            <span><i style="background:#E53935"></i>Quảng cáo</span>
+            <span><i style="background:#7C4DFF"></i>Chiết khấu</span>
+            <span><i style="background:#EC4899"></i>Phí Affiliate (5–10%)</span>
+          </div>
+        </div>
+        <p class="chart__note">Minh hoạ theo tỉ lệ — mức chênh thực tế tuỳ sản phẩm.</p>
+      </div></div></div>
+    </section>
+
+    <section class="promise rv" style="--i:3" aria-label="Cam kết">
+      <div class="pk" style="--c:31,160,90;--ic:#7EE2A8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>Thanh toán khi nhận (COD)</div>
+      <div class="pk" style="--c:59,130,246;--ic:#9CC3FF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/><path d="m16 17 2 2 4-4"/></svg>Kiểm tra hàng trước khi trả tiền</div>
+      <div class="pk" style="--c:245,166,35;--ic:#FFD27A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Đổi trả trong 7 ngày</div>
+      <div class="pk" style="--c:124,77,255;--ic:#C3B0FF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5"/><path d="M3 9h18"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>Cửa hàng thật tại Hà Nội</div>
+    </section>
+    <div class="bike-l rv" style="--i:4">
+      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent.gif" data-when="view" alt="" width="225" height="127" loading="lazy" decoding="async">
+      <span class="f1">Giao nhanh toàn quốc · Đổi trả 7 ngày</span>
+      <span class="f2">© 2026 EasyHome. Kênh bán chính thức.</span>
+      <span class="f3" data-legal hidden>Hộ kinh doanh <span data-cfg="BUSINESS_NAME"></span> · MST: <span data-cfg="TAX_ID"></span></span>
+    </div>
+  </div>
+
+  <div class="col-r">
+    <section class="rev rv" style="--i:4" aria-label="Đánh giá của khách">
+      <div class="lbl rev__hd">
+        <div><h2>Khách nói gì</h2><p class="note">⭐ <b>5.0</b> trên Google</p></div>
+        <a class="rev__all" data-link="GOOGLE_REVIEWS_URL" href="#" target="_blank" rel="noopener">Xem tất cả đánh giá ›</a>
+      </div>
+      <div class="rev__list" id="eh-reviews">
+        <div class="rev__skel" aria-hidden="true"></div><div class="rev__skel" aria-hidden="true"></div><div class="rev__skel" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="card find rv" style="--i:4">
+      <h2>🔍 Tìm nhanh sản phẩm</h2>
+      <form class="search" role="search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE3C8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="eh-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Bạn đang tìm gì? VD: hộp inox…" aria-label="Tìm sản phẩm">
+      </form>
+      <span class="find__lbl">Gợi ý cho bạn</span>
+      <div id="eh-hot-products" class="hot">
+        <div class="eh-skel" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="eh-skel" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="eh-skel" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="eh-skel" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+      <div id="eh-results" aria-live="polite" hidden></div>
+      <p class="search__empty" hidden>Chưa thấy món bạn cần — nhấn Enter để tìm trên web, hoặc nhắn <a data-link="ZALO_URL" href="#">Zalo</a> để tụi tôi tìm giúp nhé.</p>
+    </section>
+
+    <section class="list g2 rv" style="--i:5">
+      <div class="lbl"><h2>Mua trên sàn quen thuộc</h2><p class="note">Tiện hơn nhưng giá cao hơn do phí sàn.</p></div>
+      <a class="ch flat lift" data-link="SHOPEE_URL" href="#" style="--hc:rgba(238,77,45,.65)">
+        <span class="ch__b" style="background:#EE4D2D;font-size:21px">S</span>
+        <span class="ch__t"><b>Shopee</b><span>Gian hàng chính hãng EasyHome</span></span><span class="ch__go">›</span>
+      </a>
+      <a class="ch flat lift" data-link="TIKTOK_URL" href="#" style="--hc:rgba(254,44,85,.65)">
+        <span class="ch__b" style="background:#000;border:1px solid rgba(255,255,255,.12);font-size:22px;text-shadow:-1.5px -1.5px 0 #25F4EE,1.5px 1.5px 0 #FE2C55">♪</span>
+        <span class="ch__t"><b>TikTok Shop</b><span>Săn deal kèm livestream</span></span><span class="ch__go">›</span>
+      </a>
+    </section>
+
+    <section class="list g3 rv" style="--i:6">
+      <div class="lbl"><h2>Xem review trước khi mua</h2></div>
+      <a class="ch lift" data-link="YT_EH_URL" href="#" style="--hc:rgba(255,0,0,.6)">
+        <span class="ch__b" style="background:#FF0000"><span class="yt"></span></span>
+        <span class="ch__t"><b>YouTube Easy Home</b><span>Tự tay mở hộp &amp; trải nghiệm</span></span><span class="ch__go">›</span>
+      </a>
+      <a class="ch lift" data-link="YT_CT_URL" href="#" style="--hc:rgba(255,0,0,.6)">
+        <span class="ch__b" style="background:#FF0000"><span class="yt"></span></span>
+        <span class="ch__t"><b>YouTube Checker Tech</b><span>Việt hoá review công nghệ quốc tế</span></span><span class="ch__go">›</span>
+      </a>
+      <a class="ch lift" data-link="BLOG_URL" href="#" style="--hc:rgba(18,179,168,.65)">
+        <span class="ch__b" style="background:#0E8F86"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></span>
+        <span class="ch__t"><b>Blog Đánh Giá Công Nghệ</b><span>Bài chuyên sâu, so sánh &amp; kinh nghiệm chọn mua</span></span><span class="ch__go">›</span>
+      </a>
+    </section>
+
+    <section class="list g3 contact rv" style="--i:7">
+      <div class="lbl"><h2>Liên hệ &amp; tư vấn</h2></div>
+      <a class="ch lift" data-link="FB_URL" href="#" style="--hc:rgba(24,119,242,.7)">
+        <span class="ch__b" style="background:#1877F2;font:800 26px Arial,sans-serif;padding-top:4px">f</span>
+        <span class="ch__t"><b>Facebook chủ shop</b><span>Trang cá nhân, kết bạn để xem ảnh hàng thật</span></span><span class="ch__go">›</span>
+      </a>
+      <a class="ch lift" data-link="ZALO_URL" href="#" style="--hc:rgba(0,104,255,.75)">
+        <span class="ch__b" style="background:#0068FF;font-size:12.5px">Zalo</span>
+        <span class="ch__t"><b>Chat Zalo</b><span>Tư vấn chọn mẫu, báo giá nhanh</span></span><span class="ch__go">›</span>
+      </a>
+      <div class="ch hotline lift" style="--hc:rgba(31,160,90,.7)">
+        <a data-tel href="#">
+          <span class="ch__b" style="background:#1FA05A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="ch__t"><b class="num" data-hotline>070.251.6668</b><span>Hotline <span data-cfg="OPEN_HOURS">8:00–21:00 · Mở cả tuần</span></span></span>
+        </a>
+        <button class="copy" type="button">
+          <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <svg class="ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+          <span class="t1">Copy số</span><span class="t2">Đã copy</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="list rv" style="--i:8">
+      <div class="lbl"><h2>Ghé cửa hàng</h2></div>
+      <div class="card store">
+        <div class="map" aria-hidden="true">
+          <i class="grid"></i><i class="river"></i><i class="r1"></i><i class="r2"></i><i class="r3"></i><i class="p1"></i><i class="p2"></i>
+          <div class="pin"><i class="ring"></i><i class="dot"></i><i class="head"></i></div>
+        </div>
+        <div class="store__row">
+          <div><b class="n">EasyHome Store</b><span>📍 <span data-cfg="ADDRESS">Tòa C Vinaconex 2, KĐT Kim Văn Kim Lũ, Định Công, Hà Nội</span></span><span>🕘 <span data-cfg="OPEN_HOURS">8:00–21:00 · Mở cả tuần</span></span><span>⭐ <b id="eh-star">5.0</b> · Đã xác minh trên Google</span></div>
+          <a class="btn-sm" data-link="MAPS_URL" href="#">Chỉ đường <span style="font-size:20px;line-height:1;margin-top:-2px">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="rv" style="--i:9">
+      <img class="eh-anim" src="assets/mascot_bike_poster.png" data-gif="assets/mascot_bike_transparent.gif" data-when="view" alt="Kỹ sư EasyHome giao hàng" width="150" height="84" loading="lazy" decoding="async">
+      <span class="f1">Giao nhanh toàn quốc · Đổi trả 7 ngày</span>
+      <span class="f2">© 2026 EasyHome. Kênh bán chính thức.</span>
+      <span class="f3" data-legal hidden>Hộ kinh doanh <span data-cfg="BUSINESS_NAME"></span> · MST: <span data-cfg="TAX_ID"></span></span>
+    </footer>
+  </div>
+</main>
+
+<div class="toast" role="status" aria-live="polite">✓ Đã copy</div>
+
+<nav class="bar" aria-label="Liên hệ nhanh">
+  <div class="bar__in">
+    <a class="z" data-link="ZALO_URL" href="#">Zalo</a>
+    <a class="m" data-link="WEB_URL" href="https://easyhome.requa.vn"><span>Mua web</span><span class="arr">›</span></a>
+    <a class="c" data-tel href="#">Gọi</a>
+  </div>
+</nav>
+
+<script src="eh-social-ticker.js" defer></script>
 </body>
 </html>
