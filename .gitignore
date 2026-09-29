@@ -1,0 +1,17 @@
+# Rác từ lần giải nén Claude Design (chỉ chặn track, file vẫn nằm trên máy)
+EasyHome Bio (offline).html
+EasyHome Bio (standalone).html
+EasyHome Bio.dc.html
+bundle-src.html
+easyhome-bio.html
+.thumbnail
+uploads/
+EasyHome bio link redesign/
+
+# Wrangler / Cloudflare local dev
+.wrangler/
+
+# Bản trùng do archive tạo ra (trang dùng *_transparent.gif và eh-logo.png)
+assets/mascot_wave.gif
+assets/mascot_bike.gif
+assets/eh-logo-light.png
